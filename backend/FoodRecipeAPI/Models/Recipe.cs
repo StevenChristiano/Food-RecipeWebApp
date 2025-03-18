@@ -1,4 +1,6 @@
-﻿namespace FoodRecipeAPI.Models
+﻿using System.Text.Json.Serialization;
+
+namespace FoodRecipeAPI.Models
 {
     public class Recipe
     {
@@ -6,7 +8,9 @@
         public string Name { get; set; } = string.Empty;
         public string Details { get; set; } = string.Empty;
         public int CategoryId { get; set; }
+
+        [JsonIgnore]
         public Category Category { get; set; }
-        public List<Ingredient> Ingredients { get; set; }
+        public List<Ingredient> Ingredients { get; set; } = new();
     }
 }

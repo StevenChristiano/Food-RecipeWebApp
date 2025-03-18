@@ -28,7 +28,7 @@ namespace FoodRecipeAPI.Controllers
         public async Task<IActionResult> CreateRecipe([FromBody] CreateRecipeCommand command)
         {
             var recipe = await _mediator.Send(command);
-            return CreatedAtAction(nameof (GetRecipes), new {id = recipe.Id}, recipe);
+            return Ok(recipe);
         }
     }
 }
