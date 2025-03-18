@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "7P1mrG4VUHeWLEXlthmS2TaZLJuRWyYEOeZzHIK3Ii0=",
+  "Source": "FoodRecipeAPI",
+  "BasePath": "_content/FoodRecipeAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
