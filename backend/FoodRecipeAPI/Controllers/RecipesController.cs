@@ -18,10 +18,10 @@ namespace FoodRecipeAPI.Controllers
         }
 
         [HttpGet("get-recipes-list")]
-        public async Task<ActionResult<List<RecipeListDto>>> GetRecipes()
+        public async Task<IActionResult> GetAllRecipes([FromQuery] RecipeQueryDto queryDto)
         {
-            var recipes = await _mediator.Send(new GetAllRecipesQuery());
-            return Ok(recipes);
+            var result = await _mediator.Send(new GetAllRecipesQuery(queryDto));
+            return Ok(result);
         }
 
         [HttpPost("create-recipe")]
