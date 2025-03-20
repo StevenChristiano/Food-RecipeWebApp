@@ -1,570 +1,117 @@
-2025-03-19 10:26:58.173 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 10:26:58.216 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 10:26:58.307 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 10:26:58.308 +07:00 [INF] Hosting environment: Development
-2025-03-19 10:26:58.308 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 10:26:58.973 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 10:26:59.291 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 330.3066ms
-2025-03-19 10:26:59.298 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 10:26:59.298 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 10:26:59.309 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 10.9131ms
-2025-03-19 10:26:59.309 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 10:26:59.325 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 28.1019ms
-2025-03-19 10:26:59.396 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 87.2985ms
-2025-03-19 10:26:59.445 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 10:26:59.469 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.2898ms
-2025-03-19 10:27:12.343 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - null null
-2025-03-19 10:27:12.354 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI)'
-2025-03-19 10:27:12.376 +07:00 [INF] Route matched with {action = "GetRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FoodRecipeAPI.Models.Dto.RecipeListDto]]] GetRecipes() on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 10:27:13.578 +07:00 [INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-2025-03-19 10:27:13.682 +07:00 [INF] Executed DbCommand (24ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
-FROM (
-    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
-    FROM [Recipes] AS [r]
-    ORDER BY [r].[Name]
-    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
-) AS [r0]
-INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
-ORDER BY [r0].[Name]
-2025-03-19 10:27:13.693 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 10:27:13.701 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI) in 1320.6672ms
-2025-03-19 10:27:13.703 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI)'
-2025-03-19 10:27:13.705 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 1353.4285 ms
-2025-03-19 10:27:13.712 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 1369.1359ms
-2025-03-19 10:50:41.118 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 10:50:41.150 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 10:50:41.235 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 10:50:41.236 +07:00 [INF] Hosting environment: Development
-2025-03-19 10:50:41.237 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 10:50:41.715 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 10:50:41.983 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 281.4022ms
-2025-03-19 10:50:41.990 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 10:50:41.990 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 10:50:41.995 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 5.0065ms
-2025-03-19 10:50:41.996 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 10:50:42.006 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 16.5398ms
-2025-03-19 10:50:42.043 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 47.1329ms
-2025-03-19 10:50:42.094 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 10:50:42.107 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.2548ms
-2025-03-19 10:50:48.278 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - null null
-2025-03-19 10:50:48.285 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI)'
-2025-03-19 10:50:48.303 +07:00 [INF] Route matched with {action = "GetRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FoodRecipeAPI.Models.Dto.RecipeListDto]]] GetRecipes() on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 10:50:49.390 +07:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-2025-03-19 10:50:49.490 +07:00 [INF] Executed DbCommand (19ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
-FROM (
-    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
-    FROM [Recipes] AS [r]
-    ORDER BY [r].[Name]
-    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
-) AS [r0]
-INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
-ORDER BY [r0].[Name]
-2025-03-19 10:50:49.501 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 10:50:49.509 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI) in 1201.9006ms
-2025-03-19 10:50:49.510 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI)'
-2025-03-19 10:50:49.513 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 1229.9445 ms
-2025-03-19 10:50:49.519 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 1241.9358ms
-2025-03-19 10:51:21.014 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - null null
-2025-03-19 10:51:21.029 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI)'
-2025-03-19 10:51:21.030 +07:00 [INF] Route matched with {action = "GetRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FoodRecipeAPI.Models.Dto.RecipeListDto]]] GetRecipes() on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 10:51:21.060 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-2025-03-19 10:51:21.071 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
-FROM (
-    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
-    FROM [Recipes] AS [r]
-    ORDER BY [r].[Name]
-    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
-) AS [r0]
-INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
-ORDER BY [r0].[Name]
-2025-03-19 10:51:21.076 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 10:51:21.078 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI) in 46.0701ms
-2025-03-19 10:51:21.081 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI)'
-2025-03-19 10:51:21.082 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 53.0957 ms
-2025-03-19 10:51:21.084 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 70.3354ms
-2025-03-19 10:51:21.124 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/favicon.ico - null null
-2025-03-19 10:51:21.128 +07:00 [INF] HTTP GET /favicon.ico responded 404 in 0.2627 ms
-2025-03-19 10:51:21.130 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/favicon.ico - 404 0 null 6.4192ms
-2025-03-19 10:51:21.134 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7211/favicon.ico, Response status code: 404
-2025-03-19 10:52:28.254 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list/?page=1&pageSize=5&orderBy=category&orderState=desc&categoryName=Pasta - null null
-2025-03-19 10:52:28.270 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI)'
-2025-03-19 10:52:28.271 +07:00 [INF] Route matched with {action = "GetRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FoodRecipeAPI.Models.Dto.RecipeListDto]]] GetRecipes() on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 10:52:28.328 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-2025-03-19 10:52:28.335 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
-FROM (
-    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
-    FROM [Recipes] AS [r]
-    ORDER BY [r].[Name]
-    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
-) AS [r0]
-INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
-ORDER BY [r0].[Name]
-2025-03-19 10:52:28.337 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 10:52:28.338 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI) in 65.3845ms
-2025-03-19 10:52:28.338 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI)'
-2025-03-19 10:52:28.339 +07:00 [INF] HTTP GET /api/v1/get-recipes-list/ responded 200 in 69.2953 ms
-2025-03-19 10:52:28.340 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list/?page=1&pageSize=5&orderBy=category&orderState=desc&categoryName=Pasta - 200 null application/json; charset=utf-8 86.8362ms
-2025-03-19 10:52:39.532 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?page=1&pageSize=5&orderBy=category&orderState=desc&categoryName=Pasta - null null
-2025-03-19 10:52:39.537 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI)'
-2025-03-19 10:52:39.537 +07:00 [INF] Route matched with {action = "GetRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FoodRecipeAPI.Models.Dto.RecipeListDto]]] GetRecipes() on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 10:52:39.541 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-2025-03-19 10:52:39.545 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
-FROM (
-    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
-    FROM [Recipes] AS [r]
-    ORDER BY [r].[Name]
-    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
-) AS [r0]
-INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
-ORDER BY [r0].[Name]
-2025-03-19 10:52:39.546 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 10:52:39.547 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI) in 8.7227ms
-2025-03-19 10:52:39.549 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI)'
-2025-03-19 10:52:39.549 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 12.8476 ms
-2025-03-19 10:52:39.551 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?page=1&pageSize=5&orderBy=category&orderState=desc&categoryName=Pasta - 200 null application/json; charset=utf-8 18.978ms
-2025-03-19 11:04:43.353 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 11:04:43.385 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 11:04:43.463 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 11:04:43.464 +07:00 [INF] Hosting environment: Development
-2025-03-19 11:04:43.465 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 11:04:44.000 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 11:04:44.226 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 234.5608ms
-2025-03-19 11:04:44.231 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 11:04:44.231 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 11:04:44.234 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 3.6565ms
-2025-03-19 11:04:44.236 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 11:04:44.243 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 12.5047ms
-2025-03-19 11:04:44.275 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 39.7231ms
-2025-03-19 11:04:44.321 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 11:04:44.335 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.617ms
-2025-03-19 11:04:49.028 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - null null
-2025-03-19 11:04:49.037 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI)'
-2025-03-19 11:04:49.054 +07:00 [INF] Route matched with {action = "GetRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FoodRecipeAPI.Models.Dto.RecipeListDto]]] GetRecipes() on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:04:50.126 +07:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-2025-03-19 11:04:50.231 +07:00 [INF] Executed DbCommand (20ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
-FROM (
-    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
-    FROM [Recipes] AS [r]
-    ORDER BY [r].[Name]
-    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
-) AS [r0]
-INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
-ORDER BY [r0].[Name]
-2025-03-19 11:04:50.243 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:04:50.253 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI) in 1194.9031ms
-2025-03-19 11:04:50.255 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI)'
-2025-03-19 11:04:50.257 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 1222.5370 ms
-2025-03-19 11:04:50.264 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 1235.9272ms
-2025-03-19 11:05:11.643 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 11:05:11.681 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 11:05:11.781 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 11:05:11.782 +07:00 [INF] Hosting environment: Development
-2025-03-19 11:05:11.783 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 11:05:12.259 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 11:05:12.470 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 220.2282ms
-2025-03-19 11:05:12.476 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 11:05:12.476 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 11:05:12.480 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 3.8378ms
-2025-03-19 11:05:12.481 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 11:05:12.489 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 12.5792ms
-2025-03-19 11:05:12.531 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 50.4834ms
-2025-03-19 11:05:12.604 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 11:05:12.627 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 23.3572ms
-2025-03-19 11:05:19.835 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - null null
-2025-03-19 11:05:19.843 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI)'
-2025-03-19 11:05:19.866 +07:00 [INF] Route matched with {action = "GetRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FoodRecipeAPI.Models.Dto.RecipeListDto]]] GetRecipes() on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:05:20.964 +07:00 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-2025-03-19 11:05:21.078 +07:00 [INF] Executed DbCommand (21ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
-FROM (
-    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
-    FROM [Recipes] AS [r]
-    ORDER BY [r].[Name]
-    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
-) AS [r0]
-INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
-ORDER BY [r0].[Name]
-2025-03-19 11:05:21.092 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:05:21.103 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI) in 1233.2383ms
-2025-03-19 11:05:21.105 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipes (FoodRecipeAPI)'
-2025-03-19 11:05:21.108 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 1266.2367 ms
-2025-03-19 11:05:21.118 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 1282.7798ms
-2025-03-19 11:32:58.634 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 11:32:58.690 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 11:32:58.833 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 11:32:58.836 +07:00 [INF] Hosting environment: Development
-2025-03-19 11:32:58.837 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 11:32:59.547 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 11:32:59.955 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 424.1131ms
-2025-03-19 11:32:59.961 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 11:32:59.961 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 11:32:59.968 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 6.5774ms
-2025-03-19 11:32:59.970 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 11:32:59.987 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 25.93ms
-2025-03-19 11:33:00.052 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 82.412ms
-2025-03-19 11:33:00.153 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 11:33:00.179 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 26.6401ms
-2025-03-19 11:33:18.040 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=Pasta - null null
-2025-03-19 11:33:18.050 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:33:18.077 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:33:19.619 +07:00 [INF] Executed DbCommand (64ms) [Parameters=[@__request_Query_CategoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-WHERE [c].[Name] = @__request_Query_CategoryName_0
-2025-03-19 11:33:19.676 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__request_Query_CategoryName_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r].[Name], [c].[Name] AS [CategoryName], [r].[Details]
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-WHERE [c].[Name] = @__request_Query_CategoryName_0
-ORDER BY [r].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-2025-03-19 11:33:19.691 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:33:19.706 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 1622.7457ms
-2025-03-19 11:33:19.708 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:33:19.713 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 1664.4341 ms
-2025-03-19 11:33:19.728 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=Pasta - 200 null application/json; charset=utf-8 1689.0844ms
-2025-03-19 11:33:26.632 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - null null
-2025-03-19 11:33:26.636 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:33:26.637 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:33:26.666 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-2025-03-19 11:33:26.689 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
-FROM (
-    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
-    FROM [Recipes] AS [r]
-    ORDER BY [r].[Name]
-    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
-) AS [r0]
-INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
-ORDER BY [r0].[Name]
-2025-03-19 11:33:26.692 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:33:26.694 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 54.9824ms
-2025-03-19 11:33:26.695 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:33:26.696 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 59.9930 ms
-2025-03-19 11:33:26.698 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 65.466ms
-2025-03-19 11:33:32.706 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=string - null null
-2025-03-19 11:33:32.709 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:33:32.710 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:33:32.771 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_Query_CategoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-WHERE [c].[Name] = @__request_Query_CategoryName_0
-2025-03-19 11:33:32.774 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_Query_CategoryName_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r].[Name], [c].[Name] AS [CategoryName], [r].[Details]
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-WHERE [c].[Name] = @__request_Query_CategoryName_0
-ORDER BY [r].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-2025-03-19 11:33:32.776 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:33:32.777 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 65.8389ms
-2025-03-19 11:33:32.778 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:33:32.779 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 70.5950 ms
-2025-03-19 11:33:32.782 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=string - 200 null application/json; charset=utf-8 75.6492ms
-2025-03-19 11:33:46.199 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=Savory - null null
-2025-03-19 11:33:46.202 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:33:46.203 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:33:46.209 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_Query_CategoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-WHERE [c].[Name] = @__request_Query_CategoryName_0
-2025-03-19 11:33:46.213 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_Query_CategoryName_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r].[Name], [c].[Name] AS [CategoryName], [r].[Details]
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-WHERE [c].[Name] = @__request_Query_CategoryName_0
-ORDER BY [r].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-2025-03-19 11:33:46.215 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:33:46.216 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 11.5561ms
-2025-03-19 11:33:46.217 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:33:46.218 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 15.9998 ms
-2025-03-19 11:33:46.219 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=Savory - 200 null application/json; charset=utf-8 20.606ms
-2025-03-19 11:34:00.944 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?OrderBy=Category - null null
-2025-03-19 11:34:00.946 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:34:00.947 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:34:00.957 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-2025-03-19 11:34:00.965 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r].[Name], [c].[Name] AS [CategoryName], [r].[Details]
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-ORDER BY [c].[Name]
-OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
-2025-03-19 11:34:00.966 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:34:00.968 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 19.3587ms
-2025-03-19 11:34:00.969 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:34:00.969 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 22.9890 ms
-2025-03-19 11:34:00.971 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?OrderBy=Category - 200 null application/json; charset=utf-8 27.007ms
-2025-03-19 11:34:53.915 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?OrderBy=categoRy&OrderState=desc - null null
-2025-03-19 11:34:53.924 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:34:53.925 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:34:53.939 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-2025-03-19 11:34:53.947 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r].[Name], [c].[Name] AS [CategoryName], [r].[Details]
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-ORDER BY [c].[Name] DESC
-OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
-2025-03-19 11:34:53.949 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:34:53.950 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 23.4467ms
-2025-03-19 11:34:53.950 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:34:53.951 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 26.9929 ms
-2025-03-19 11:34:53.952 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?OrderBy=categoRy&OrderState=desc - 200 null application/json; charset=utf-8 37.6845ms
-2025-03-19 11:35:04.097 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?OrderBy=categoRy&OrderState=desc&PageSize=2 - null null
-2025-03-19 11:35:04.100 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:35:04.101 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:35:04.105 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-2025-03-19 11:35:04.109 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r].[Name], [c].[Name] AS [CategoryName], [r].[Details]
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-ORDER BY [c].[Name] DESC
-OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
-2025-03-19 11:35:04.110 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:35:04.111 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 9.6446ms
-2025-03-19 11:35:04.112 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:35:04.113 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 13.7082 ms
-2025-03-19 11:35:04.115 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?OrderBy=categoRy&OrderState=desc&PageSize=2 - 200 null application/json; charset=utf-8 17.6917ms
-2025-03-19 11:35:08.087 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?OrderBy=categoRy&OrderState=desc&Page=2&PageSize=2 - null null
-2025-03-19 11:35:08.090 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:35:08.091 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:35:08.096 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-2025-03-19 11:35:08.107 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r].[Name], [c].[Name] AS [CategoryName], [r].[Details]
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-ORDER BY [c].[Name] DESC
-OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
-2025-03-19 11:35:08.109 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:35:08.110 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 17.0536ms
-2025-03-19 11:35:08.110 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:35:08.111 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 21.3881 ms
-2025-03-19 11:35:08.112 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?OrderBy=categoRy&OrderState=desc&Page=2&PageSize=2 - 200 null application/json; charset=utf-8 25.4324ms
-2025-03-19 11:39:50.422 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 11:39:50.456 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 11:39:50.557 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 11:39:50.558 +07:00 [INF] Hosting environment: Development
-2025-03-19 11:39:50.559 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 11:39:51.166 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 11:39:51.504 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 353.0323ms
-2025-03-19 11:39:51.509 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 11:39:51.509 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 11:39:51.518 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 8.896ms
-2025-03-19 11:39:51.544 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 11:39:51.549 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 40.0205ms
-2025-03-19 11:39:51.605 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 61.678ms
-2025-03-19 11:39:51.673 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 11:39:51.695 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 22.8344ms
-2025-03-19 11:40:00.781 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=aselole - null null
-2025-03-19 11:40:00.798 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:40:00.836 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:40:02.311 +07:00 [INF] Executed DbCommand (58ms) [Parameters=[@__request_Query_CategoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-WHERE [c].[Name] = @__request_Query_CategoryName_0
-2025-03-19 11:40:02.364 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__request_Query_CategoryName_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r].[Name], [c].[Name] AS [CategoryName], [r].[Details]
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-WHERE [c].[Name] = @__request_Query_CategoryName_0
-ORDER BY [r].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-2025-03-19 11:40:02.375 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:40:02.389 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 1547.8133ms
-2025-03-19 11:40:02.390 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:40:02.393 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 1600.6226 ms
-2025-03-19 11:40:02.402 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=aselole - 200 null application/json; charset=utf-8 1621.0308ms
-2025-03-19 11:40:59.478 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=aselole&OrderBy=dasdadadas - null null
-2025-03-19 11:40:59.490 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:40:59.491 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:40:59.522 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[@__request_Query_CategoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-WHERE [c].[Name] = @__request_Query_CategoryName_0
-2025-03-19 11:40:59.528 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
-2025-03-19 11:40:59.529 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
-2025-03-19 11:40:59.535 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_Query_CategoryName_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r].[Name], [c].[Name] AS [CategoryName], [r].[Details]
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-WHERE [c].[Name] = @__request_Query_CategoryName_0
-ORDER BY (SELECT 1)
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-2025-03-19 11:40:59.536 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:40:59.537 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 45.8254ms
-2025-03-19 11:40:59.539 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:40:59.540 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 50.0496 ms
-2025-03-19 11:40:59.542 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=aselole&OrderBy=dasdadadas - 200 null application/json; charset=utf-8 67.3842ms
-2025-03-19 11:50:10.659 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 11:50:10.701 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 11:50:10.835 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 11:50:10.836 +07:00 [INF] Hosting environment: Development
-2025-03-19 11:50:10.837 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 11:50:11.211 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 11:50:11.464 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 263.7443ms
-2025-03-19 11:50:11.469 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 11:50:11.469 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 11:50:11.474 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 4.8141ms
-2025-03-19 11:50:11.476 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 11:50:11.483 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 13.5447ms
-2025-03-19 11:50:11.522 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 46.5933ms
-2025-03-19 11:50:11.583 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 11:50:11.599 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 16.5941ms
-2025-03-19 11:50:15.056 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - null null
-2025-03-19 11:50:15.064 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:50:15.084 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:50:16.440 +07:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-2025-03-19 11:50:16.549 +07:00 [INF] Executed DbCommand (22ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
-FROM (
-    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
-    FROM [Recipes] AS [r]
-    ORDER BY [r].[Name]
-    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
-) AS [r0]
-INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
-ORDER BY [r0].[Name]
-2025-03-19 11:50:16.562 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:50:16.574 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 1484.4073ms
-2025-03-19 11:50:16.576 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:50:16.579 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 1516.4926 ms
-2025-03-19 11:50:16.587 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 1530.8681ms
-2025-03-19 11:50:22.411 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?OrderState=dadas - null null
-2025-03-19 11:50:22.414 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:50:22.415 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:50:22.442 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-2025-03-19 11:50:22.452 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
-FROM (
-    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
-    FROM [Recipes] AS [r]
-    ORDER BY [r].[Name] DESC
-    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
-) AS [r0]
-INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
-ORDER BY [r0].[Name] DESC
-2025-03-19 11:50:22.455 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:50:22.456 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 39.4755ms
-2025-03-19 11:50:22.457 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:50:22.458 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 44.0884 ms
-2025-03-19 11:50:22.459 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?OrderState=dadas - 200 null application/json; charset=utf-8 48.4835ms
-2025-03-19 11:50:26.049 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?OrderState=dadas - null null
-2025-03-19 11:50:26.052 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:50:26.053 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:50:26.124 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-2025-03-19 11:50:26.129 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
-FROM (
-    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
-    FROM [Recipes] AS [r]
-    ORDER BY [r].[Name] DESC
-    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
-) AS [r0]
-INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
-ORDER BY [r0].[Name] DESC
-2025-03-19 11:50:26.131 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:50:26.132 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 77.424ms
-2025-03-19 11:50:26.133 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:50:26.134 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 81.5712 ms
-2025-03-19 11:50:26.135 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?OrderState=dadas - 200 null application/json; charset=utf-8 85.8919ms
-2025-03-19 11:50:33.679 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=dasdsd&OrderState=dadas - null null
-2025-03-19 11:50:33.681 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:50:33.682 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:50:33.700 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__request_Query_CategoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-WHERE [c].[Name] = @__request_Query_CategoryName_0
-2025-03-19 11:50:33.708 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__request_Query_CategoryName_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r].[Name], [c].[Name] AS [CategoryName], [r].[Details]
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-WHERE [c].[Name] = @__request_Query_CategoryName_0
-ORDER BY [r].[Name] DESC
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-2025-03-19 11:50:33.710 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:50:33.711 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 26.8565ms
-2025-03-19 11:50:33.711 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:50:33.712 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 31.0758 ms
-2025-03-19 11:50:33.713 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=dasdsd&OrderState=dadas - 200 null application/json; charset=utf-8 34.4826ms
-2025-03-19 11:54:39.799 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 11:54:39.832 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 11:54:39.919 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 11:54:39.921 +07:00 [INF] Hosting environment: Development
-2025-03-19 11:54:39.921 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 11:54:40.634 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 11:54:40.944 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 324.6671ms
-2025-03-19 11:54:40.949 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 11:54:40.949 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 11:54:40.957 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 7.1893ms
-2025-03-19 11:54:40.962 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 11:54:40.972 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 22.753ms
-2025-03-19 11:54:41.022 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 63.7606ms
-2025-03-19 11:54:41.080 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 11:54:41.102 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 22.0567ms
-2025-03-19 11:54:48.390 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=dasdad - null null
-2025-03-19 11:54:48.398 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:54:48.420 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:54:49.572 +07:00 [INF] Executed DbCommand (45ms) [Parameters=[@__category_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT CASE
-    WHEN EXISTS (
-        SELECT 1
-        FROM [Categories] AS [c]
-        WHERE [c].[Name] = @__category_0) THEN CAST(1 AS bit)
-    ELSE CAST(0 AS bit)
-END
-2025-03-19 11:54:49.683 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 1258.7132ms
-2025-03-19 11:54:49.685 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:54:49.688 +07:00 [ERR] HTTP GET /api/v1/get-recipes-list responded 500 in 1291.3128 ms
-FluentValidation.ValidationException: Validation failed: 
- -- CategoryName: Category not found. Severity: Error
-   at FoodRecipeAPI.Application.Queries.GetAllRecipesHandler.Handle(GetAllRecipesQuery request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Queries\GetAllRecipesQuery.cs:line 34
-   at FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes(RecipeQueryDto queryDto) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 23
+2025-03-19 09:50:48.558 +07:00 [INF] Now listening on: https://localhost:7211
+2025-03-19 09:50:48.598 +07:00 [INF] Now listening on: http://localhost:5267
+2025-03-19 09:50:48.717 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-19 09:50:48.719 +07:00 [INF] Hosting environment: Development
+2025-03-19 09:50:48.720 +07:00 [INF] Content root path: D:\WorkingSpace\Repository\Backend-RecipeWebApp\backend\FoodRecipeAPI
+2025-03-19 09:50:49.667 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger - null null
+2025-03-19 09:50:49.895 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger - 301 0 null 242.0127ms
+2025-03-19 09:50:49.905 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-03-19 09:50:49.987 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 82.3914ms
+2025-03-19 09:50:50.060 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/swagger-ui.css - null null
+2025-03-19 09:50:50.070 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-03-19 09:50:50.060 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/swagger-ui-standalone-preset.js - null null
+2025-03-19 09:50:50.062 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
+2025-03-19 09:50:50.061 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-19 09:50:50.081 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 19.8973ms
+2025-03-19 09:50:50.060 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.css - null null
+2025-03-19 09:50:50.060 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/swagger-ui-bundle.js - null null
+2025-03-19 09:50:50.114 +07:00 [INF] Sending file. Request path: '/index.css'. Physical path: 'N/A'
+2025-03-19 09:50:50.120 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.css - 200 202 text/css 60.1303ms
+2025-03-19 09:50:50.126 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 64.6397ms
+2025-03-19 09:50:50.153 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-03-19 09:50:50.153 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-03-19 09:50:50.157 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/swagger-ui.css - 200 154948 text/css 97.2796ms
+2025-03-19 09:50:50.161 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/swagger-ui-standalone-preset.js - 200 229223 text/javascript 101.0525ms
+2025-03-19 09:50:50.184 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-03-19 09:50:50.189 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/swagger-ui-bundle.js - 200 1466324 text/javascript 128.79ms
+2025-03-19 09:50:50.198 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 128.9036ms
+2025-03-19 09:50:50.488 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-03-19 09:50:50.501 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.7535ms
+2025-03-19 09:50:51.356 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/favicon-32x32.png - null null
+2025-03-19 09:50:51.360 +07:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-03-19 09:50:51.361 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/favicon-32x32.png - 200 628 image/png 6.2239ms
+2025-03-19 09:50:56.623 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7211/api/v1/create-recipe - application/json 166
+2025-03-19 09:50:56.645 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
+2025-03-19 09:50:56.669 +07:00 [INF] Route matched with {action = "CreateRecipe", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateRecipe(FoodRecipeAPI.Application.Commands.CreateRecipeCommand) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-19 09:51:12.457 +07:00 [ERR] An error occurred using the connection to database 'FoodRecipeDB' on server 'localhost\SQLEXPRESS'.
+2025-03-19 09:51:12.504 +07:00 [ERR] An exception occurred while iterating over the results of a query for context type 'FoodRecipeAPI.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+2025-03-19 09:51:12.575 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI) in 15905.6433ms
+2025-03-19 09:51:12.577 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
+2025-03-19 09:51:12.580 +07:00 [ERR] HTTP POST /api/v1/create-recipe responded 500 in 15953.8523 ms
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at FoodRecipeAPI.Application.Commands.CreateRecipeHandler.Handle(CreateRecipeCommand request, CancellationToken cancellationToken) in D:\WorkingSpace\Repository\Backend-RecipeWebApp\backend\FoodRecipeAPI\Application\Commands\CreateRecipeCommand.cs:line 30
+   at FoodRecipeAPI.Controllers.RecipesController.CreateRecipe(CreateRecipeCommand command) in D:\WorkingSpace\Repository\Backend-RecipeWebApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 30
    at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
@@ -577,11 +124,35 @@ FluentValidation.ValidationException: Validation failed:
    at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
    at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-2025-03-19 11:54:49.780 +07:00 [ERR] Unhandled exception occurred
-FluentValidation.ValidationException: Validation failed: 
- -- CategoryName: Category not found. Severity: Error
-   at FoodRecipeAPI.Application.Queries.GetAllRecipesHandler.Handle(GetAllRecipesQuery request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Queries\GetAllRecipesQuery.cs:line 34
-   at FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes(RecipeQueryDto queryDto) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 23
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+2025-03-19 09:51:12.643 +07:00 [ERR] Unhandled exception occurred
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at FoodRecipeAPI.Application.Commands.CreateRecipeHandler.Handle(CreateRecipeCommand request, CancellationToken cancellationToken) in D:\WorkingSpace\Repository\Backend-RecipeWebApp\backend\FoodRecipeAPI\Application\Commands\CreateRecipeCommand.cs:line 30
+   at FoodRecipeAPI.Controllers.RecipesController.CreateRecipe(CreateRecipeCommand command) in D:\WorkingSpace\Repository\Backend-RecipeWebApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 30
    at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
@@ -596,779 +167,22 @@ FluentValidation.ValidationException: Validation failed:
    at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
    at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
    at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
-   at FoodRecipeAPI.Middleware.ExceptionHandlingMiddleware.Invoke(HttpContext context) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Middleware\ExceptionHandlingMiddleware.cs:line 23
-2025-03-19 11:54:49.802 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=dasdad - 500 null application/json 1411.4681ms
-2025-03-19 11:55:52.009 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=Pasta - null null
-2025-03-19 11:55:52.018 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:55:52.019 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:55:52.055 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__category_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT CASE
-    WHEN EXISTS (
-        SELECT 1
-        FROM [Categories] AS [c]
-        WHERE [c].[Name] = @__category_0) THEN CAST(1 AS bit)
-    ELSE CAST(0 AS bit)
-END
-2025-03-19 11:55:52.162 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__request_Query_CategoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-WHERE [c].[Name] = @__request_Query_CategoryName_0
-2025-03-19 11:55:52.189 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__request_Query_CategoryName_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r].[Name], [c].[Name] AS [CategoryName], [r].[Details]
-FROM [Recipes] AS [r]
-INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
-WHERE [c].[Name] = @__request_Query_CategoryName_0
-ORDER BY [r].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-2025-03-19 11:55:52.204 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 11:55:52.211 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 191.2033ms
-2025-03-19 11:55:52.213 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:55:52.214 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 195.9876 ms
-2025-03-19 11:55:52.216 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=Pasta - 200 null application/json; charset=utf-8 207.1524ms
-2025-03-19 11:56:02.081 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=Pasta&OrderBy=bebek - null null
-2025-03-19 11:56:02.084 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:56:02.085 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 11:56:02.172 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__category_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT CASE
-    WHEN EXISTS (
-        SELECT 1
-        FROM [Categories] AS [c]
-        WHERE [c].[Name] = @__category_0) THEN CAST(1 AS bit)
-    ELSE CAST(0 AS bit)
-END
-2025-03-19 11:56:02.253 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 166.4739ms
-2025-03-19 11:56:02.255 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 11:56:02.258 +07:00 [ERR] HTTP GET /api/v1/get-recipes-list responded 500 in 173.5566 ms
-FluentValidation.ValidationException: Validation failed: 
- -- OrderBy: Invalid orderBy value. Allowed values: 'Name', 'Category'. Severity: Error
-   at FoodRecipeAPI.Application.Queries.GetAllRecipesHandler.Handle(GetAllRecipesQuery request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Queries\GetAllRecipesQuery.cs:line 34
-   at FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes(RecipeQueryDto queryDto) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 23
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-2025-03-19 11:56:02.324 +07:00 [ERR] Unhandled exception occurred
-FluentValidation.ValidationException: Validation failed: 
- -- OrderBy: Invalid orderBy value. Allowed values: 'Name', 'Category'. Severity: Error
-   at FoodRecipeAPI.Application.Queries.GetAllRecipesHandler.Handle(GetAllRecipesQuery request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Queries\GetAllRecipesQuery.cs:line 34
-   at FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes(RecipeQueryDto queryDto) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 23
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
-   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
-   at FoodRecipeAPI.Middleware.ExceptionHandlingMiddleware.Invoke(HttpContext context) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Middleware\ExceptionHandlingMiddleware.cs:line 23
-2025-03-19 11:56:02.331 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=Pasta&OrderBy=bebek - 500 null application/json 250.0373ms
-2025-03-19 12:00:02.137 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 12:00:02.191 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 12:00:02.308 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 12:00:02.310 +07:00 [INF] Hosting environment: Development
-2025-03-19 12:00:02.311 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 12:00:03.065 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 12:00:03.300 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 248.6358ms
-2025-03-19 12:00:03.339 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 12:00:03.339 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 12:00:03.339 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 12:00:03.345 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 6.8755ms
-2025-03-19 12:00:03.427 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 88.7045ms
-2025-03-19 12:00:03.456 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 117.5246ms
-2025-03-19 12:00:03.509 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 12:00:03.530 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 20.8634ms
-2025-03-19 12:00:50.819 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 12:00:50.860 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 12:00:50.963 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 12:00:50.964 +07:00 [INF] Hosting environment: Development
-2025-03-19 12:00:50.965 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 12:00:51.569 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 12:00:51.937 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 382.9743ms
-2025-03-19 12:00:51.943 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 12:00:51.943 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 12:00:51.953 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 9.6583ms
-2025-03-19 12:00:51.956 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 12:00:51.959 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 16.0206ms
-2025-03-19 12:00:52.019 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 64.028ms
-2025-03-19 12:00:52.087 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 12:00:52.109 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 22.9015ms
-2025-03-19 12:01:05.760 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=dad - null null
-2025-03-19 12:01:05.769 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 12:01:05.795 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 12:01:07.201 +07:00 [INF] Executed DbCommand (49ms) [Parameters=[@__category_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT CASE
-    WHEN EXISTS (
-        SELECT 1
-        FROM [Categories] AS [c]
-        WHERE [c].[Name] = @__category_0) THEN CAST(1 AS bit)
-    ELSE CAST(0 AS bit)
-END
-2025-03-19 12:01:07.320 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 1519.146ms
-2025-03-19 12:01:07.322 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 12:01:07.327 +07:00 [ERR] HTTP GET /api/v1/get-recipes-list responded 500 in 1559.7164 ms
-FluentValidation.ValidationException: Validation failed: 
- -- CategoryName: Category not found. Severity: Error
-   at FoodRecipeAPI.Application.Queries.GetAllRecipesHandler.Handle(GetAllRecipesQuery request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Queries\GetAllRecipesQuery.cs:line 34
-   at FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes(RecipeQueryDto queryDto) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 23
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-2025-03-19 12:01:07.442 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=dad - 400 null application/problem+json 1682.4934ms
-2025-03-19 12:02:00.009 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 12:02:00.056 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 12:02:00.174 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 12:02:00.175 +07:00 [INF] Hosting environment: Development
-2025-03-19 12:02:00.176 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 12:02:00.599 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 12:02:00.831 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 240.9062ms
-2025-03-19 12:02:00.836 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 12:02:00.836 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 12:02:00.843 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 12:02:00.843 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 6.7993ms
-2025-03-19 12:02:00.851 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 14.8803ms
-2025-03-19 12:02:00.898 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 54.8821ms
-2025-03-19 12:02:00.975 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 12:02:01.001 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 25.7961ms
-2025-03-19 12:13:58.991 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 12:13:59.043 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 12:13:59.197 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 12:13:59.198 +07:00 [INF] Hosting environment: Development
-2025-03-19 12:13:59.199 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 12:13:59.806 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 12:14:00.120 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 327.7876ms
-2025-03-19 12:14:00.126 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 12:14:00.126 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 12:14:00.167 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 12:14:00.172 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 46.4602ms
-2025-03-19 12:14:00.179 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 53.3251ms
-2025-03-19 12:14:00.226 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 60.5427ms
-2025-03-19 12:14:00.279 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 12:14:00.298 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.2948ms
-2025-03-19 12:14:18.841 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7211/api/v1/create-recipe - application/json 167
-2025-03-19 12:14:18.850 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:14:18.872 +07:00 [INF] Route matched with {action = "CreateRecipe", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateRecipe(FoodRecipeAPI.Application.Commands.CreateRecipeCommand) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 12:14:20.040 +07:00 [INF] Executed DbCommand (54ms) [Parameters=[@__request_CategoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT TOP(1) [c].[Id], [c].[Name]
-FROM [Categories] AS [c]
-WHERE [c].[Name] = @__request_CategoryName_0
-2025-03-19 12:14:20.120 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI) in 1243.7926ms
-2025-03-19 12:14:20.122 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:14:20.125 +07:00 [ERR] HTTP POST /api/v1/create-recipe responded 500 in 1276.8256 ms
-System.ComponentModel.DataAnnotations.ValidationException: Category does not exist. Please choose from the available categories.
-   at FoodRecipeAPI.Application.Commands.CreateRecipeHandler.Handle(CreateRecipeCommand request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Commands\CreateRecipeCommand.cs:line 36
-   at FoodRecipeAPI.Controllers.RecipesController.CreateRecipe(CreateRecipeCommand command) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 30
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-2025-03-19 12:14:20.215 +07:00 [ERR] An unhandled exception has occurred while executing the request.
-System.ComponentModel.DataAnnotations.ValidationException: Category does not exist. Please choose from the available categories.
-   at FoodRecipeAPI.Application.Commands.CreateRecipeHandler.Handle(CreateRecipeCommand request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Commands\CreateRecipeCommand.cs:line 36
-   at FoodRecipeAPI.Controllers.RecipesController.CreateRecipe(CreateRecipeCommand command) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 30
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
-   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
-   at FoodRecipeAPI.Middleware.ExceptionMiddleware.Invoke(HttpContext context) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Middleware\ExceptionMiddleware.cs:line 23
-   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
-   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
-2025-03-19 12:14:20.229 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7211/api/v1/create-recipe - 500 null text/plain; charset=utf-8 1388.2497ms
-2025-03-19 12:22:28.518 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 12:22:28.570 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 12:22:28.702 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 12:22:28.704 +07:00 [INF] Hosting environment: Development
-2025-03-19 12:22:28.705 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 12:22:29.503 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 12:22:29.801 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 311.7848ms
-2025-03-19 12:22:29.805 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 12:22:29.805 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 12:22:29.810 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 5.3369ms
-2025-03-19 12:22:29.818 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 12:22:29.828 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 22.7874ms
-2025-03-19 12:22:29.863 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 45.3289ms
-2025-03-19 12:22:29.919 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 12:22:29.934 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.2489ms
-2025-03-19 12:22:49.047 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7211/api/v1/create-recipe - application/json 168
-2025-03-19 12:22:49.056 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:22:49.079 +07:00 [INF] Route matched with {action = "CreateRecipe", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateRecipe(FoodRecipeAPI.Application.Commands.CreateRecipeCommand) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 12:22:50.376 +07:00 [INF] Executed DbCommand (51ms) [Parameters=[@__request_CategoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT TOP(1) [c].[Id], [c].[Name]
-FROM [Categories] AS [c]
-WHERE [c].[Name] = @__request_CategoryName_0
-2025-03-19 12:22:50.479 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI) in 1395.1589ms
-2025-03-19 12:22:50.481 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:22:50.485 +07:00 [ERR] HTTP POST /api/v1/create-recipe responded 500 in 1431.0341 ms
-FluentValidation.ValidationException: Category does not exist. Please choose from the available categories.
-   at FoodRecipeAPI.Application.Commands.CreateRecipeHandler.Handle(CreateRecipeCommand request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Commands\CreateRecipeCommand.cs:line 40
-   at FoodRecipeAPI.Controllers.RecipesController.CreateRecipe(CreateRecipeCommand command) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 30
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-2025-03-19 12:22:50.585 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7211/api/v1/create-recipe - 400 null application/problem+json 1537.1492ms
-2025-03-19 12:23:15.717 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 12:23:15.792 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 12:23:15.955 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 12:23:15.957 +07:00 [INF] Hosting environment: Development
-2025-03-19 12:23:15.958 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 12:23:16.490 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 12:23:16.812 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 337.7171ms
-2025-03-19 12:23:16.818 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 12:23:16.818 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 12:23:16.824 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 5.87ms
-2025-03-19 12:23:16.828 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 12:23:16.837 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 19.5761ms
-2025-03-19 12:23:16.895 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 67.7354ms
-2025-03-19 12:23:16.982 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 12:23:17.011 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 29.1356ms
-2025-03-19 12:23:23.877 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7211/api/v1/create-recipe - application/json 166
-2025-03-19 12:23:23.887 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:23:23.907 +07:00 [INF] Route matched with {action = "CreateRecipe", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateRecipe(FoodRecipeAPI.Application.Commands.CreateRecipeCommand) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 12:23:25.363 +07:00 [INF] Executed DbCommand (53ms) [Parameters=[@__request_CategoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT TOP(1) [c].[Id], [c].[Name]
-FROM [Categories] AS [c]
-WHERE [c].[Name] = @__request_CategoryName_0
-2025-03-19 12:23:25.568 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-INSERT INTO [Recipes] ([CategoryId], [Details], [Name])
-OUTPUT INSERTED.[Id]
-VALUES (@p0, @p1, @p2);
-2025-03-19 12:23:25.618 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-INSERT INTO [Ingredients] ([IngredientName], [Quantity], [RecipeId])
-OUTPUT INSERTED.[Id]
-VALUES (@p0, @p1, @p2);
-2025-03-19 12:23:25.725 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__recipe_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r0].[Id], [r0].[CategoryId], [r0].[Details], [r0].[Name], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId]
-FROM (
-    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name]
-    FROM [Recipes] AS [r]
-    WHERE [r].[Id] = @__recipe_Id_0
-) AS [r0]
-LEFT JOIN [Ingredients] AS [i] ON [r0].[Id] = [i].[RecipeId]
-ORDER BY [r0].[Id]
-2025-03-19 12:23:25.739 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
-2025-03-19 12:23:25.748 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI) in 1836.4686ms
-2025-03-19 12:23:25.750 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:23:25.753 +07:00 [INF] HTTP POST /api/v1/create-recipe responded 200 in 1867.9972 ms
-2025-03-19 12:23:25.761 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7211/api/v1/create-recipe - 200 null application/json; charset=utf-8 1883.898ms
-2025-03-19 12:23:45.192 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7211/api/v1/create-recipe - application/json 174
-2025-03-19 12:23:45.196 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:23:45.198 +07:00 [INF] Route matched with {action = "CreateRecipe", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateRecipe(FoodRecipeAPI.Application.Commands.CreateRecipeCommand) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 12:23:45.226 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__request_CategoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT TOP(1) [c].[Id], [c].[Name]
-FROM [Categories] AS [c]
-WHERE [c].[Name] = @__request_CategoryName_0
-2025-03-19 12:23:45.282 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI) in 82.8387ms
-2025-03-19 12:23:45.283 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:23:45.284 +07:00 [ERR] HTTP POST /api/v1/create-recipe responded 500 in 88.2981 ms
-FluentValidation.ValidationException: Category does not exist. Please choose from the available categories.
-   at FoodRecipeAPI.Application.Commands.CreateRecipeHandler.Handle(CreateRecipeCommand request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Commands\CreateRecipeCommand.cs:line 40
-   at FoodRecipeAPI.Controllers.RecipesController.CreateRecipe(CreateRecipeCommand command) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 30
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-2025-03-19 12:23:45.358 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7211/api/v1/create-recipe - 400 null application/problem+json 165.9889ms
-2025-03-19 12:36:02.221 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 12:36:02.262 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 12:36:02.383 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 12:36:02.385 +07:00 [INF] Hosting environment: Development
-2025-03-19 12:36:02.386 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 12:36:02.849 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 12:36:03.151 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 316.9009ms
-2025-03-19 12:36:03.158 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 12:36:03.158 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 12:36:03.173 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 12:36:03.174 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 16.2822ms
-2025-03-19 12:36:03.187 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 30.0538ms
-2025-03-19 12:36:03.235 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 62.6402ms
-2025-03-19 12:36:03.298 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 12:36:03.317 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 20.0232ms
-2025-03-19 12:36:20.359 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7211/api/v1/create-recipe - application/json 166
-2025-03-19 12:36:20.368 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:36:20.401 +07:00 [INF] Route matched with {action = "CreateRecipe", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateRecipe(FoodRecipeAPI.Application.Commands.CreateRecipeCommand) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 12:36:22.232 +07:00 [INF] Executed DbCommand (77ms) [Parameters=[@__request_CategoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT TOP(1) [c].[Id], [c].[Name]
-FROM [Categories] AS [c]
-WHERE [c].[Name] = @__request_CategoryName_0
-2025-03-19 12:36:22.339 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI) in 1932.3076ms
-2025-03-19 12:36:22.342 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:36:22.347 +07:00 [ERR] HTTP POST /api/v1/create-recipe responded 500 in 1979.8551 ms
-FluentValidation.ValidationException: Category does not exist. Please choose from the available categories.
-   at FoodRecipeAPI.Application.Commands.CreateRecipeHandler.Handle(CreateRecipeCommand request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Commands\CreateRecipeCommand.cs:line 40
-   at FoodRecipeAPI.Controllers.RecipesController.CreateRecipe(CreateRecipeCommand command) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 30
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-2025-03-19 12:36:22.459 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7211/api/v1/create-recipe - 400 null application/problem+json 2099.4435ms
-2025-03-19 12:36:35.611 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - null null
-2025-03-19 12:36:35.614 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 12:36:35.621 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 12:36:35.721 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM [Recipes] AS [r]
-2025-03-19 12:36:35.785 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
-FROM (
-    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
-    FROM [Recipes] AS [r]
-    ORDER BY [r].[Name]
-    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
-) AS [r0]
-INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
-ORDER BY [r0].[Name]
-2025-03-19 12:36:35.797 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
-2025-03-19 12:36:35.801 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 178.868ms
-2025-03-19 12:36:35.803 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 12:36:35.804 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 189.7129 ms
-2025-03-19 12:36:35.806 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 194.7206ms
-2025-03-19 12:36:39.461 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=dasdasd - null null
-2025-03-19 12:36:39.463 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 12:36:39.464 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 12:36:39.544 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__category_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT CASE
-    WHEN EXISTS (
-        SELECT 1
-        FROM [Categories] AS [c]
-        WHERE [c].[Name] = @__category_0) THEN CAST(1 AS bit)
-    ELSE CAST(0 AS bit)
-END
-2025-03-19 12:36:39.626 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 160.6516ms
-2025-03-19 12:36:39.628 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
-2025-03-19 12:36:39.629 +07:00 [ERR] HTTP GET /api/v1/get-recipes-list responded 500 in 165.6778 ms
-FluentValidation.ValidationException: Validation failed: 
- -- CategoryName: Category not found. Severity: Error
-   at FoodRecipeAPI.Application.Queries.GetAllRecipesHandler.Handle(GetAllRecipesQuery request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Queries\GetAllRecipesQuery.cs:line 34
-   at FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes(RecipeQueryDto queryDto) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 23
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-2025-03-19 12:36:39.680 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/api/v1/get-recipes-list?CategoryName=dasdasd - 400 null application/problem+json 218.6705ms
-2025-03-19 12:40:23.145 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 12:40:23.213 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 12:40:23.396 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 12:40:23.399 +07:00 [INF] Hosting environment: Development
-2025-03-19 12:40:23.400 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 12:40:23.844 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 12:40:24.296 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 471.96ms
-2025-03-19 12:40:24.303 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 12:40:24.303 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 12:40:24.310 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 7.499ms
-2025-03-19 12:40:24.322 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 12:40:24.335 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 32.6876ms
-2025-03-19 12:40:24.394 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 72.9867ms
-2025-03-19 12:40:24.480 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 12:40:24.505 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 25.6675ms
-2025-03-19 12:40:33.515 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7211/api/v1/create-recipe - application/json 163
-2025-03-19 12:40:33.528 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:40:33.564 +07:00 [INF] Route matched with {action = "CreateRecipe", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateRecipe(FoodRecipeAPI.Application.Commands.CreateRecipeCommand) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 12:40:35.586 +07:00 [INF] Executed DbCommand (71ms) [Parameters=[@__categoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT CASE
-    WHEN EXISTS (
-        SELECT 1
-        FROM [Categories] AS [c]
-        WHERE [c].[Name] = @__categoryName_0) THEN CAST(1 AS bit)
-    ELSE CAST(0 AS bit)
-END
-2025-03-19 12:40:35.760 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI) in 2189.2723ms
-2025-03-19 12:40:35.763 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:40:35.768 +07:00 [ERR] HTTP POST /api/v1/create-recipe responded 500 in 2242.9116 ms
-FluentValidation.ValidationException: Validation failed: 
- -- CategoryName: Category does not exist. Please choose from the available categories. Severity: Error
-   at FoodRecipeAPI.Application.Commands.CreateRecipeHandler.Handle(CreateRecipeCommand request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Commands\CreateRecipeCommand.cs:line 48
-   at FoodRecipeAPI.Controllers.RecipesController.CreateRecipe(CreateRecipeCommand command) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 30
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-2025-03-19 12:40:35.940 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7211/api/v1/create-recipe - 400 null application/problem+json 2425.4142ms
-2025-03-19 12:41:45.729 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 12:41:45.809 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 12:41:46.011 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 12:41:46.014 +07:00 [INF] Hosting environment: Development
-2025-03-19 12:41:46.015 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 12:41:46.659 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 12:41:47.079 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 436.9976ms
-2025-03-19 12:41:47.090 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 12:41:47.090 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 12:41:47.102 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 11.3004ms
-2025-03-19 12:41:47.105 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 12:41:47.123 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 33.2016ms
-2025-03-19 12:41:47.202 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 97.3794ms
-2025-03-19 12:41:47.307 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 12:41:47.340 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 33.0904ms
-2025-03-19 12:41:56.267 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7211/api/v1/create-recipe - application/json 163
-2025-03-19 12:41:56.285 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:41:56.329 +07:00 [INF] Route matched with {action = "CreateRecipe", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateRecipe(FoodRecipeAPI.Application.Commands.CreateRecipeCommand) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 12:41:58.473 +07:00 [INF] Executed DbCommand (75ms) [Parameters=[@__categoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT CASE
-    WHEN EXISTS (
-        SELECT 1
-        FROM [Categories] AS [c]
-        WHERE [c].[Name] = @__categoryName_0) THEN CAST(1 AS bit)
-    ELSE CAST(0 AS bit)
-END
-2025-03-19 12:41:58.641 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI) in 2305.0179ms
-2025-03-19 12:41:58.645 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:41:58.650 +07:00 [ERR] HTTP POST /api/v1/create-recipe responded 500 in 2369.6111 ms
-FluentValidation.ValidationException: Validation failed: 
- -- CategoryName: Category does not exist. Please choose from the available categories. Severity: Error
-   at FoodRecipeAPI.Application.Commands.CreateRecipeHandler.Handle(CreateRecipeCommand request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Commands\CreateRecipeCommand.cs:line 48
-   at FoodRecipeAPI.Controllers.RecipesController.CreateRecipe(CreateRecipeCommand command) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 30
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-2025-03-19 12:41:58.794 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7211/api/v1/create-recipe - 400 null application/problem+json 2526.0758ms
-2025-03-19 12:43:00.336 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 12:43:00.380 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 12:43:00.492 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 12:43:00.493 +07:00 [INF] Hosting environment: Development
-2025-03-19 12:43:00.493 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 12:43:01.143 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 12:43:01.399 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 268.2691ms
-2025-03-19 12:43:01.405 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 12:43:01.405 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 12:43:01.412 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 12:43:01.413 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 8.24ms
-2025-03-19 12:43:01.425 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 20.9108ms
-2025-03-19 12:43:01.474 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 61.798ms
-2025-03-19 12:43:01.537 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 12:43:01.555 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 17.6868ms
-2025-03-19 12:43:09.573 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7211/api/v1/create-recipe - application/json 167
-2025-03-19 12:43:09.584 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:43:09.605 +07:00 [INF] Route matched with {action = "CreateRecipe", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateRecipe(FoodRecipeAPI.Application.Commands.CreateRecipeCommand) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 12:43:10.940 +07:00 [INF] Executed DbCommand (66ms) [Parameters=[@__categoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT CASE
-    WHEN EXISTS (
-        SELECT 1
-        FROM [Categories] AS [c]
-        WHERE [c].[Name] = @__categoryName_0) THEN CAST(1 AS bit)
-    ELSE CAST(0 AS bit)
-END
-2025-03-19 12:43:11.068 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI) in 1457.106ms
-2025-03-19 12:43:11.070 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:43:11.074 +07:00 [ERR] HTTP POST /api/v1/create-recipe responded 500 in 1491.4636 ms
-FluentValidation.ValidationException: Validation failed: 
- -- CategoryName: Category does not exist. Please choose from the available categories. Severity: Error
-   at FoodRecipeAPI.Application.Commands.CreateRecipeHandler.Handle(CreateRecipeCommand request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Commands\CreateRecipeCommand.cs:line 48
-   at FoodRecipeAPI.Controllers.RecipesController.CreateRecipe(CreateRecipeCommand command) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 30
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-2025-03-19 12:43:11.193 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7211/api/v1/create-recipe - 400 null application/problem+json 1620.0101ms
-2025-03-19 12:45:03.998 +07:00 [INF] Now listening on: https://localhost:7211
-2025-03-19 12:45:04.049 +07:00 [INF] Now listening on: http://localhost:5267
-2025-03-19 12:45:04.185 +07:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-19 12:45:04.186 +07:00 [INF] Hosting environment: Development
-2025-03-19 12:45:04.187 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
-2025-03-19 12:45:04.643 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
-2025-03-19 12:45:04.920 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 293.3061ms
-2025-03-19 12:45:04.925 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
-2025-03-19 12:45:04.925 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
-2025-03-19 12:45:04.930 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 5.6509ms
-2025-03-19 12:45:04.931 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
-2025-03-19 12:45:04.941 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 16.911ms
-2025-03-19 12:45:04.993 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 61.6393ms
-2025-03-19 12:45:05.056 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
-2025-03-19 12:45:05.079 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 23.485ms
-2025-03-19 12:45:22.069 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7211/api/v1/create-recipe - application/json 164
-2025-03-19 12:45:22.077 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:45:22.096 +07:00 [INF] Route matched with {action = "CreateRecipe", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateRecipe(FoodRecipeAPI.Application.Commands.CreateRecipeCommand) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 12:45:23.320 +07:00 [INF] Executed DbCommand (41ms) [Parameters=[@__categoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT CASE
-    WHEN EXISTS (
-        SELECT 1
-        FROM [Categories] AS [c]
-        WHERE [c].[Name] = @__categoryName_0) THEN CAST(1 AS bit)
-    ELSE CAST(0 AS bit)
-END
-2025-03-19 12:45:23.426 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI) in 1326.265ms
-2025-03-19 12:45:23.428 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:45:23.432 +07:00 [ERR] HTTP POST /api/v1/create-recipe responded 500 in 1356.1294 ms
-FluentValidation.ValidationException: Validation failed: 
- -- CategoryName: Category does not exist. Please choose from the available categories. Severity: Error
-   at FoodRecipeAPI.Application.Commands.CreateRecipeHandler.Handle(CreateRecipeCommand request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Commands\CreateRecipeCommand.cs:line 48
-   at FoodRecipeAPI.Controllers.RecipesController.CreateRecipe(CreateRecipeCommand command) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 30
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-2025-03-19 12:45:23.522 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7211/api/v1/create-recipe - 400 null application/problem+json 1453.2781ms
-2025-03-19 12:45:31.425 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7211/api/v1/create-recipe - application/json 160
-2025-03-19 12:45:31.428 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:45:31.430 +07:00 [INF] Route matched with {action = "CreateRecipe", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateRecipe(FoodRecipeAPI.Application.Commands.CreateRecipeCommand) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
-2025-03-19 12:45:31.453 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__categoryName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
-SELECT CASE
-    WHEN EXISTS (
-        SELECT 1
-        FROM [Categories] AS [c]
-        WHERE [c].[Name] = @__categoryName_0) THEN CAST(1 AS bit)
-    ELSE CAST(0 AS bit)
-END
-2025-03-19 12:45:31.504 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI) in 73.5667ms
-2025-03-19 12:45:31.506 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.CreateRecipe (FoodRecipeAPI)'
-2025-03-19 12:45:31.508 +07:00 [ERR] HTTP POST /api/v1/create-recipe responded 500 in 79.5080 ms
-System.ArgumentException: An item with the same key has already been added. Key: CategoryName
-   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)
-   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
-   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](List`1 source, Func`2 keySelector, Func`2 elementSelector, IEqualityComparer`1 comparer)
-   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector)
-   at FoodRecipeAPI.Application.Commands.CreateRecipeHandler.Handle(CreateRecipeCommand request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Commands\CreateRecipeCommand.cs:line 37
-   at FoodRecipeAPI.Controllers.RecipesController.CreateRecipe(CreateRecipeCommand command) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 30
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-2025-03-19 12:45:31.559 +07:00 [ERR] An unhandled exception has occurred while executing the request.
-System.ArgumentException: An item with the same key has already been added. Key: CategoryName
-   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)
-   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
-   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](List`1 source, Func`2 keySelector, Func`2 elementSelector, IEqualityComparer`1 comparer)
-   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector)
-   at FoodRecipeAPI.Application.Commands.CreateRecipeHandler.Handle(CreateRecipeCommand request, CancellationToken cancellationToken) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Application\Commands\CreateRecipeCommand.cs:line 37
-   at FoodRecipeAPI.Controllers.RecipesController.CreateRecipe(CreateRecipeCommand command) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Controllers\RecipesController.cs:line 30
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
-   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
-   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
-   at FoodRecipeAPI.Middleware.ExceptionMiddleware.Invoke(HttpContext context) in C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\Middleware\ExceptionMiddleware.cs:line 23
-   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
-   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
-2025-03-19 12:45:31.570 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7211/api/v1/create-recipe - 500 null text/plain; charset=utf-8 145.3046ms
-2025-03-19 13:22:40.852 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT 1
-2025-03-19 13:22:40.891 +07:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
-2025-03-19 13:22:40.912 +07:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-DECLARE @result int;
-EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
-SELECT @result
-2025-03-19 13:22:41.021 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
-BEGIN
-    CREATE TABLE [__EFMigrationsHistory] (
-        [MigrationId] nvarchar(150) NOT NULL,
-        [ProductVersion] nvarchar(32) NOT NULL,
-        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
-    );
-END;
-2025-03-19 13:22:41.029 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT 1
-2025-03-19 13:22:41.030 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
-2025-03-19 13:22:41.039 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT [MigrationId], [ProductVersion]
-FROM [__EFMigrationsHistory]
-ORDER BY [MigrationId];
-2025-03-19 13:22:41.049 +07:00 [INF] Reverting migration '20250318071050_AddingJsonIgnoretoRelation'.
-2025-03-19 13:22:41.066 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-DELETE FROM [__EFMigrationsHistory]
-WHERE [MigrationId] = N'20250318071050_AddingJsonIgnoretoRelation';
-2025-03-19 13:22:41.068 +07:00 [INF] Reverting migration '20250317074700_InitialMigration'.
-2025-03-19 13:22:41.078 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-DROP TABLE [Ingredients];
-2025-03-19 13:22:41.083 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-DROP TABLE [Recipes];
-2025-03-19 13:22:41.087 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-DROP TABLE [Categories];
-2025-03-19 13:22:41.089 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-DELETE FROM [__EFMigrationsHistory]
-WHERE [MigrationId] = N'20250317074700_InitialMigration';
-2025-03-19 13:22:41.095 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-DECLARE @result int;
-EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
-SELECT @result
-2025-03-19 13:22:50.375 +07:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT 1
-2025-03-19 13:22:50.413 +07:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
-2025-03-19 13:22:50.426 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-DECLARE @result int;
-EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
-SELECT @result
-2025-03-19 13:22:50.484 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
-BEGIN
-    CREATE TABLE [__EFMigrationsHistory] (
-        [MigrationId] nvarchar(150) NOT NULL,
-        [ProductVersion] nvarchar(32) NOT NULL,
-        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
-    );
-END;
-2025-03-19 13:22:50.493 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT 1
-2025-03-19 13:22:50.495 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
-2025-03-19 13:22:50.499 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT [MigrationId], [ProductVersion]
-FROM [__EFMigrationsHistory]
-ORDER BY [MigrationId];
-2025-03-19 13:22:50.511 +07:00 [INF] Applying migration '20250317074700_InitialMigration'.
-2025-03-19 13:22:50.532 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-CREATE TABLE [Categories] (
-    [Id] int NOT NULL IDENTITY,
-    [Name] nvarchar(max) NOT NULL,
-    CONSTRAINT [PK_Categories] PRIMARY KEY ([Id])
-);
-2025-03-19 13:22:50.536 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-CREATE TABLE [Recipes] (
-    [Id] int NOT NULL IDENTITY,
-    [Name] nvarchar(max) NOT NULL,
-    [Details] nvarchar(max) NOT NULL,
-    [CategoryId] int NOT NULL,
-    CONSTRAINT [PK_Recipes] PRIMARY KEY ([Id]),
-    CONSTRAINT [FK_Recipes_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]) ON DELETE CASCADE
-);
-2025-03-19 13:22:50.540 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-CREATE TABLE [Ingredients] (
-    [Id] int NOT NULL IDENTITY,
-    [RecipeId] int NOT NULL,
-    [IngredientName] nvarchar(max) NOT NULL,
-    [Quantity] nvarchar(max) NOT NULL,
-    CONSTRAINT [PK_Ingredients] PRIMARY KEY ([Id]),
-    CONSTRAINT [FK_Ingredients_Recipes_RecipeId] FOREIGN KEY ([RecipeId]) REFERENCES [Recipes] ([Id]) ON DELETE CASCADE
-);
-2025-03-19 13:22:50.546 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-CREATE INDEX [IX_Ingredients_RecipeId] ON [Ingredients] ([RecipeId]);
-2025-03-19 13:22:50.549 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-CREATE INDEX [IX_Recipes_CategoryId] ON [Recipes] ([CategoryId]);
-2025-03-19 13:22:50.553 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20250317074700_InitialMigration', N'9.0.3');
-2025-03-19 13:22:50.555 +07:00 [INF] Applying migration '20250318071050_AddingJsonIgnoretoRelation'.
-2025-03-19 13:22:50.559 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20250318071050_AddingJsonIgnoretoRelation', N'9.0.3');
-2025-03-19 13:22:50.562 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-DECLARE @result int;
-EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
-SELECT @result
+   at FoodRecipeAPI.Middleware.ExceptionHandlingMiddleware.Invoke(HttpContext context) in D:\WorkingSpace\Repository\Backend-RecipeWebApp\backend\FoodRecipeAPI\Middleware\ExceptionHandlingMiddleware.cs:line 23
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+2025-03-19 09:51:12.670 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7211/api/v1/create-recipe - 500 null application/json 16050.6539ms
+2025-03-19 10:52:38.364 +07:00 [INF] Now listening on: https://localhost:7211
+2025-03-19 10:52:38.406 +07:00 [INF] Now listening on: http://localhost:5267
+2025-03-19 10:52:38.583 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-19 10:52:38.584 +07:00 [INF] Hosting environment: Development
+2025-03-19 10:52:38.585 +07:00 [INF] Content root path: D:\WorkingSpace\Repository\Backend-RecipeWebApp\backend\FoodRecipeAPI
+2025-03-19 10:52:39.290 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.html - null null
+2025-03-19 10:52:39.617 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.html - 200 null text/html;charset=utf-8 340.9781ms
+2025-03-19 10:52:39.716 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-19 10:52:39.716 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/index.js - null null
+2025-03-19 10:52:39.717 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/_vs/browserLink - null null
+2025-03-19 10:52:39.739 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/index.js - 200 null application/javascript;charset=utf-8 22.8711ms
+2025-03-19 10:52:39.769 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 52.75ms
+2025-03-19 10:52:39.860 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/_vs/browserLink - 200 null text/javascript; charset=UTF-8 142.7283ms
+2025-03-19 10:52:40.138 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - null null
+2025-03-19 10:52:40.159 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7211/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.7435ms

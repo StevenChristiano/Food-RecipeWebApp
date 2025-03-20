@@ -4,10 +4,6 @@ using Serilog;
 using MediatR;
 using System.Reflection;
 using FoodRecipeAPI.Middleware;
-using FluentValidation;
-using FoodRecipeAPI.Application.Validators;
-using FoodRecipeAPI.Application.Commands;
-using FoodRecipeAPI.Application.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,12 +21,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddValidatorsFromAssemblyContaining<RecipeQueryValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<CreateRecipeValidator>();
 
 var app = builder.Build();
 
-app.UseMiddleware<ExceptionMiddleware>();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 
 // Configure the HTTP request pipeline.

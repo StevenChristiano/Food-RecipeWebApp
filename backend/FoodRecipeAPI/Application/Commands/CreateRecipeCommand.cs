@@ -1,13 +1,10 @@
-﻿using FluentValidation;
-using FoodRecipeAPI.Data;
+﻿using FoodRecipeAPI.Data;
 using FoodRecipeAPI.Models;
 using FoodRecipeAPI.Models.Dto;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.ComponentModel.DataAnnotations;
-using ValidationException = FluentValidation.ValidationException;
 
 namespace FoodRecipeAPI.Application.Commands
 {
@@ -22,39 +19,22 @@ namespace FoodRecipeAPI.Application.Commands
     public class CreateRecipeHandler : IRequestHandler<CreateRecipeCommand, RecipeDetailsDto>
     {
         private readonly ApplicationDbContext _context;
-        private readonly IValidator<CreateRecipeCommand> _validator;
-        public CreateRecipeHandler(ApplicationDbContext context, IValidator<CreateRecipeCommand> validator)
+        public CreateRecipeHandler(ApplicationDbContext context)
         {
             _context = context;
-            _validator = validator;
         }
 
         public async Task<RecipeDetailsDto> Handle(CreateRecipeCommand request, CancellationToken cancellationToken)
         {
-            var validationResult = await _validator.ValidateAsync(request, cancellationToken);
-            if (!validationResult.IsValid)
-            {
-                var errors = validationResult.Errors.ToDictionary(
-                    error => error.PropertyName,
-                    error => new[] { error.ErrorMessage }
-                );
-                var problemDetails = new ValidationProblemDetails(errors)
-                {
-                    Type = "https://tools.ietf.org/html/rfc7807",
-                    Title = "Validation failed",
-                    Status = StatusCodes.Status400BadRequest
-                };
-
-                throw new ValidationException(problemDetails.Errors.Select(e => new FluentValidation.Results.ValidationFailure(e.Key, e.Value.First())));
-            }
-
-                // 🔹 Cari kategori atau buat baru
-                var category = await _context.Categories
+            // 🔹 Cari kategori atau buat baru
+            var category = await _context.Categories
                 .FirstOrDefaultAsync(c => c.Name == request.CategoryName, cancellationToken);
 
             if (category == null)
             {
-                throw new ValidationException("Category does not exist. Please choose from the available categories.");
+                category = new Category { Name = request.CategoryName };
+                _context.Categories.Add(category);
+                await _context.SaveChangesAsync(cancellationToken);
             }
 
             // 🔹 Buat Recipe (TANPA Ingredients terlebih dahulu)
@@ -94,7 +74,7 @@ namespace FoodRecipeAPI.Application.Commands
             {
                 Name = savedRecipe.Name,
                 Details = savedRecipe.Details,
-                CategoryName = category.Name,
+                CategoryId = category.Id,
                 Ingredients = savedRecipe.Ingredients.Select(i => new IngredientsDto
                 {
                     Name = i.IngredientName,
