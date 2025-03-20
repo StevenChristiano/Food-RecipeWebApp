@@ -8,6 +8,7 @@ using FluentValidation;
 using FoodRecipeAPI.Application.Validators;
 using FoodRecipeAPI.Application.Commands;
 using FoodRecipeAPI.Application.Validators;
+using FoodRecipeAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,12 +22,19 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.G
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddControllers().AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+    });
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddValidatorsFromAssemblyContaining<RecipeQueryValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<CreateRecipeValidator>();
+builder.Services.AddScoped<RecipeService>();
 
 var app = builder.Build();
 

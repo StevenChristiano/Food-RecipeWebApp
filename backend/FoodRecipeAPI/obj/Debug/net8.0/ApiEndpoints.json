@@ -17,6 +17,22 @@
   },
   {
     "ContainingType": "FoodRecipeAPI.Controllers.RecipesController",
+    "Method": "GetRecipeById",
+    "RelativePath": "api/v1/get-recipe-list/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FoodRecipeAPI.Controllers.RecipesController",
     "Method": "GetAllRecipes",
     "RelativePath": "api/v1/get-recipes-list",
     "HttpMethod": "GET",

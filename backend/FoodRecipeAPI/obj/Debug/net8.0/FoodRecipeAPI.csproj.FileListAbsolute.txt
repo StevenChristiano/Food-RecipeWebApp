@@ -188,3 +188,4 @@ C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\obj\Debug\n
 C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\obj\Debug\net8.0\FoodRecipeAPI.genruntimeconfig.cache
 C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\obj\Debug\net8.0\ref\FoodRecipeAPI.dll
 C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\obj\Debug\net8.0\FoodRecipeAPI.sourcelink.json
+C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
