@@ -35,9 +35,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddValidatorsFromAssemblyContaining<RecipeQueryValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<CreateRecipeValidator>();
 builder.Services.AddScoped<RecipeService>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowNextJs",
+        policy => policy.WithOrigins("http://localhost:3000") // Adjust this URL
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+});
 
 var app = builder.Build();
-
+app.UseCors("AllowNextJs");
 app.UseMiddleware<ExceptionMiddleware>();
 
 

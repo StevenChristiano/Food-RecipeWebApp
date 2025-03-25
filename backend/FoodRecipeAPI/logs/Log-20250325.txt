@@ -1,0 +1,1749 @@
+2025-03-25 09:53:50.312 +07:00 [INF] Now listening on: http://localhost:5267
+2025-03-25 09:53:50.341 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-25 09:53:50.342 +07:00 [INF] Hosting environment: Development
+2025-03-25 09:53:50.343 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
+2025-03-25 09:54:40.304 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 09:54:40.354 +07:00 [INF] CORS policy execution successful.
+2025-03-25 09:54:40.385 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-03-25 09:54:40.391 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 09:54:40.439 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 09:54:41.716 +07:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 09:54:41.819 +07:00 [INF] Executed DbCommand (23ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 09:54:41.830 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 09:54:41.892 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 1448.7253ms
+2025-03-25 09:54:41.894 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 09:54:41.897 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 1512.6185 ms
+2025-03-25 09:54:41.907 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 1607.1488ms
+2025-03-25 09:57:04.903 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/swagger/index.html - null null
+2025-03-25 09:57:04.976 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/swagger/index.html - 200 null text/html;charset=utf-8 73.3461ms
+2025-03-25 09:57:04.984 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/swagger/index.js - null null
+2025-03-25 09:57:04.990 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/swagger/index.js - 200 null application/javascript;charset=utf-8 5.7128ms
+2025-03-25 09:57:05.058 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/swagger/v1/swagger.json - null null
+2025-03-25 09:57:05.126 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 67.646ms
+2025-03-25 09:57:16.492 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 09:57:16.495 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 09:57:16.500 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 09:57:16.589 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 09:57:16.642 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 09:57:16.646 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 144.2502ms
+2025-03-25 09:57:16.647 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 09:57:16.648 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 152.4601 ms
+2025-03-25 09:57:16.649 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 157.0954ms
+2025-03-25 10:06:24.263 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:06:24.264 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:06:24.265 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:06:24.356 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:06:24.365 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:06:24.366 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 100.5525ms
+2025-03-25 10:06:24.367 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:06:24.368 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 103.4246 ms
+2025-03-25 10:06:24.369 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 106.2261ms
+2025-03-25 10:06:24.400 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/favicon.ico - null null
+2025-03-25 10:06:24.402 +07:00 [INF] HTTP GET /favicon.ico responded 404 in 0.1112 ms
+2025-03-25 10:06:24.403 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/favicon.ico - 404 0 null 3.1747ms
+2025-03-25 10:06:24.405 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5267/favicon.ico, Response status code: 404
+2025-03-25 10:06:56.996 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:06:56.997 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:06:56.998 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:06:56.999 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:06:57.018 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:06:57.020 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:06:57.021 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 21.045ms
+2025-03-25 10:06:57.022 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:06:57.023 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 24.6677 ms
+2025-03-25 10:06:57.024 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 28.2228ms
+2025-03-25 10:08:34.556 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:08:34.557 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:08:34.558 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:08:34.559 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:08:34.576 +07:00 [INF] Executed DbCommand (12ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:08:34.578 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:08:34.579 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 18.7985ms
+2025-03-25 10:08:34.580 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:08:34.581 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 22.8227 ms
+2025-03-25 10:08:34.583 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 27.1294ms
+2025-03-25 10:08:43.487 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:08:43.489 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:08:43.490 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:08:43.491 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:08:43.497 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:08:43.499 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:08:43.500 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 7.52ms
+2025-03-25 10:08:43.501 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:08:43.501 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 11.3128 ms
+2025-03-25 10:08:43.503 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 15.4757ms
+2025-03-25 10:09:18.805 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:09:18.807 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:09:18.808 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:09:18.809 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:09:18.823 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:09:18.827 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:09:18.828 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 18.0445ms
+2025-03-25 10:09:18.829 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:09:18.830 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 22.1945 ms
+2025-03-25 10:09:18.832 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 26.1538ms
+2025-03-25 10:09:40.476 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:09:40.478 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:09:40.478 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:09:40.479 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:09:40.483 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:09:40.485 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:09:40.487 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 6.674ms
+2025-03-25 10:09:40.488 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:09:40.488 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 9.9917 ms
+2025-03-25 10:09:40.490 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 13.5845ms
+2025-03-25 10:10:19.739 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:10:19.740 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:10:19.741 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:10:19.742 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:10:19.755 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:10:19.757 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:10:19.758 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 15.0801ms
+2025-03-25 10:10:19.759 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:10:19.760 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 18.8464 ms
+2025-03-25 10:10:19.761 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 22.8833ms
+2025-03-25 10:10:23.724 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:10:23.726 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:10:23.727 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:10:23.727 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:10:23.738 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:10:23.741 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:10:23.742 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 12.3247ms
+2025-03-25 10:10:23.742 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:10:23.743 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 16.4881 ms
+2025-03-25 10:10:23.744 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 20.3845ms
+2025-03-25 10:10:39.105 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:10:39.107 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:10:39.108 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:10:39.109 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:10:39.124 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:10:39.128 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:10:39.129 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 17.3233ms
+2025-03-25 10:10:39.131 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:10:39.132 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 23.7939 ms
+2025-03-25 10:10:39.133 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 28.6058ms
+2025-03-25 10:12:34.913 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:12:34.915 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:12:34.916 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:12:34.917 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:12:34.935 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:12:34.938 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:12:34.940 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 20.9059ms
+2025-03-25 10:12:34.941 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:12:34.942 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 25.4121 ms
+2025-03-25 10:12:34.943 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 30.272ms
+2025-03-25 10:12:51.120 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:12:51.122 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:12:51.124 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:12:51.125 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:12:51.133 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:12:51.138 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:12:51.140 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 12.3155ms
+2025-03-25 10:12:51.141 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:12:51.142 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 17.9015 ms
+2025-03-25 10:12:51.144 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 24.1236ms
+2025-03-25 10:12:53.925 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:12:53.928 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:12:53.929 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:12:53.930 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:12:53.937 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:12:53.940 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:12:53.942 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 10.1399ms
+2025-03-25 10:12:53.942 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:12:53.943 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 14.3898 ms
+2025-03-25 10:12:53.945 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 20.0854ms
+2025-03-25 10:12:59.577 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:12:59.582 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:12:59.584 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:12:59.586 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:12:59.595 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:12:59.618 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:12:59.630 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 41.2722ms
+2025-03-25 10:12:59.649 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:12:59.651 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 67.0345 ms
+2025-03-25 10:12:59.653 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 76.6899ms
+2025-03-25 10:13:04.834 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:13:04.837 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:13:04.839 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:13:04.840 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:13:04.854 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:13:04.859 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:13:04.862 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 19.5087ms
+2025-03-25 10:13:04.863 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:13:04.864 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 25.6257 ms
+2025-03-25 10:13:04.866 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 32.3118ms
+2025-03-25 10:14:44.529 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:14:44.534 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:14:44.536 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:14:44.538 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:14:44.563 +07:00 [INF] Executed DbCommand (17ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:14:44.569 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:14:44.571 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 29.671ms
+2025-03-25 10:14:44.573 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:14:44.575 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 38.3457 ms
+2025-03-25 10:14:44.578 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 49.3446ms
+2025-03-25 10:14:46.361 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:14:46.365 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:14:46.367 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:14:46.369 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:14:46.386 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:14:46.403 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:14:46.407 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:14:46.409 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 37.3049ms
+2025-03-25 10:14:46.413 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:14:46.414 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 47.4876 ms
+2025-03-25 10:14:46.417 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 55.9368ms
+2025-03-25 10:14:51.361 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:14:51.365 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:14:51.368 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:14:51.371 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:14:51.391 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:14:51.407 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:14:51.413 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:14:51.416 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 40.8558ms
+2025-03-25 10:14:51.418 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:14:51.420 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 52.3737 ms
+2025-03-25 10:14:51.424 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 62.7011ms
+2025-03-25 10:15:55.791 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:15:55.794 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:15:55.795 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:15:55.797 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:15:55.810 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:15:55.820 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:15:55.823 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:15:55.825 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 26.305ms
+2025-03-25 10:15:55.827 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:15:55.828 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 32.7976 ms
+2025-03-25 10:15:55.830 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 38.9872ms
+2025-03-25 10:16:55.223 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:16:55.225 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:16:55.226 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:16:55.227 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:16:55.243 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:16:55.252 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:16:55.257 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:16:55.260 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 30.3862ms
+2025-03-25 10:16:55.261 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:16:55.263 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 36.5426 ms
+2025-03-25 10:16:55.266 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 42.7967ms
+2025-03-25 10:17:01.272 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:17:01.275 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:17:01.277 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:17:01.278 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:17:01.288 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:17:01.297 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:17:01.300 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:17:01.301 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 21.1809ms
+2025-03-25 10:17:01.302 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:17:01.304 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 27.0699 ms
+2025-03-25 10:17:01.305 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 33.6469ms
+2025-03-25 10:19:38.756 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:19:38.757 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:19:38.758 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:19:38.758 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:19:38.767 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:19:38.773 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:19:38.775 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:19:38.776 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 16.4975ms
+2025-03-25 10:19:38.777 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:19:38.777 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 19.3417 ms
+2025-03-25 10:19:38.778 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 22.5386ms
+2025-03-25 10:19:40.990 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:19:40.992 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:19:40.994 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:19:40.995 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:19:41.000 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:19:41.006 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:19:41.010 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:19:41.011 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 14.3301ms
+2025-03-25 10:19:41.013 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:19:41.013 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 19.7172 ms
+2025-03-25 10:19:41.015 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 25.437ms
+2025-03-25 10:19:45.670 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:19:45.673 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:19:45.674 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:19:45.676 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:19:45.684 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:19:45.692 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:19:45.696 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:19:45.698 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 19.679ms
+2025-03-25 10:19:45.699 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:19:45.700 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 25.9796 ms
+2025-03-25 10:19:45.702 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 32.07ms
+2025-03-25 10:22:31.230 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:22:31.233 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:22:31.235 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:22:31.237 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:22:31.250 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:22:31.261 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:22:31.264 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:22:31.265 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 26.0328ms
+2025-03-25 10:22:31.267 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:22:31.268 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 33.6677 ms
+2025-03-25 10:22:31.272 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 41.327ms
+2025-03-25 10:23:56.628 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:23:56.631 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:23:56.632 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:23:56.634 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:23:56.646 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:23:56.656 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:23:56.659 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:23:56.661 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 24.1714ms
+2025-03-25 10:23:56.662 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:23:56.663 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 31.2722 ms
+2025-03-25 10:23:56.666 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 38.2626ms
+2025-03-25 10:25:47.268 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:25:47.270 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:25:47.271 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:25:47.272 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:25:47.288 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:25:47.299 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:25:47.302 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:25:47.304 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 29.1203ms
+2025-03-25 10:25:47.305 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:25:47.306 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 35.5885 ms
+2025-03-25 10:25:47.308 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 40.8018ms
+2025-03-25 10:26:19.237 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:26:19.238 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:26:19.239 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:26:19.245 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:26:19.251 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:26:19.252 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:26:19.253 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 12.9808ms
+2025-03-25 10:26:19.254 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:26:19.255 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 16.9882 ms
+2025-03-25 10:26:19.256 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 19.5573ms
+2025-03-25 10:26:19.282 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/favicon.ico - null null
+2025-03-25 10:26:19.284 +07:00 [INF] HTTP GET /favicon.ico responded 404 in 0.0503 ms
+2025-03-25 10:26:19.285 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/favicon.ico - 404 0 null 2.8441ms
+2025-03-25 10:26:19.287 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5267/favicon.ico, Response status code: 404
+2025-03-25 10:27:37.054 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:27:37.057 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:27:37.058 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:27:37.059 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:27:37.075 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:27:37.083 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:27:37.086 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:27:37.088 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 26.5309ms
+2025-03-25 10:27:37.089 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:27:37.090 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 32.1445 ms
+2025-03-25 10:27:37.092 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 37.3081ms
+2025-03-25 10:28:28.305 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:28:28.308 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:28:28.309 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:28:28.310 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:28:28.325 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:28:28.332 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:28:28.336 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:28:28.337 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 25.1621ms
+2025-03-25 10:28:28.338 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:28:28.339 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 30.0648 ms
+2025-03-25 10:28:28.341 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 36.1455ms
+2025-03-25 10:29:11.949 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:29:11.953 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:29:11.954 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:29:11.955 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:29:11.967 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:29:11.976 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:29:11.979 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:29:11.980 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 23.3401ms
+2025-03-25 10:29:11.981 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:29:11.982 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 27.6582 ms
+2025-03-25 10:29:11.983 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 34.2064ms
+2025-03-25 10:29:32.893 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:29:32.895 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:29:32.896 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:29:32.897 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:29:32.900 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:29:32.903 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:29:32.906 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:29:32.908 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 10.5225ms
+2025-03-25 10:29:32.909 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:29:32.910 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 14.3382 ms
+2025-03-25 10:29:32.911 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 18.7692ms
+2025-03-25 10:29:35.123 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes - null null
+2025-03-25 10:29:35.125 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:29:35.126 +07:00 [INF] HTTP GET /api/v1/get-recipes responded 404 in 0.0534 ms
+2025-03-25 10:29:35.127 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes - 404 0 null 4.5839ms
+2025-03-25 10:29:35.130 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5267/api/v1/get-recipes, Response status code: 404
+2025-03-25 10:29:48.205 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:29:48.207 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:29:48.208 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:29:48.209 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:29:48.214 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:29:48.220 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:29:48.223 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:29:48.225 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 13.5096ms
+2025-03-25 10:29:48.227 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:29:48.228 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 19.9729 ms
+2025-03-25 10:29:48.230 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 25.8104ms
+2025-03-25 10:30:00.007 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:30:00.010 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:30:00.011 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:30:00.012 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:30:00.020 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:30:00.028 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:30:00.032 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:30:00.034 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 19.5829ms
+2025-03-25 10:30:00.036 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:30:00.039 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 27.8764 ms
+2025-03-25 10:30:00.042 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 34.8463ms
+2025-03-25 10:30:13.945 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:30:13.947 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:30:13.948 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:30:13.950 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:30:13.965 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:30:13.973 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:30:13.976 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:30:13.977 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 24.9199ms
+2025-03-25 10:30:13.979 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:30:13.980 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 31.8378 ms
+2025-03-25 10:30:13.983 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 37.5535ms
+2025-03-25 10:33:09.918 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:33:09.921 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:33:09.922 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:33:09.926 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:33:09.944 +07:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:33:09.961 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:33:09.964 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:33:09.967 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 38.4946ms
+2025-03-25 10:33:09.971 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:33:09.972 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 49.7037 ms
+2025-03-25 10:33:09.975 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 56.5386ms
+2025-03-25 10:36:09.423 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:36:09.425 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:36:09.427 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:36:09.428 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:36:09.441 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:36:09.451 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:36:09.454 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:36:09.456 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 26.0553ms
+2025-03-25 10:36:09.458 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:36:09.459 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 32.3649 ms
+2025-03-25 10:36:09.461 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 37.4576ms
+2025-03-25 10:37:01.480 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:37:01.482 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:37:01.483 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:37:01.484 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:37:01.500 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:37:01.503 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:37:01.504 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 17.6247ms
+2025-03-25 10:37:01.505 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:37:01.506 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 22.5527 ms
+2025-03-25 10:37:01.507 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 27.4212ms
+2025-03-25 10:37:29.140 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/0 - null null
+2025-03-25 10:37:29.142 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:37:29.143 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:37:29.144 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:37:29.149 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:37:29.153 +07:00 [INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-25 10:37:29.163 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 17.0434ms
+2025-03-25 10:37:29.164 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:37:29.166 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/0 responded 404 in 22.7024 ms
+2025-03-25 10:37:29.168 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/0 - 404 null application/json; charset=utf-8 27.9966ms
+2025-03-25 10:37:34.517 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:37:34.520 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:37:34.521 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:37:34.522 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:37:34.527 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:37:34.530 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:37:34.532 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 8.0642ms
+2025-03-25 10:37:34.533 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:37:34.534 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 13.1177 ms
+2025-03-25 10:37:34.536 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 18.4483ms
+2025-03-25 10:37:36.181 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/0 - null null
+2025-03-25 10:37:36.183 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:37:36.184 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:37:36.185 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:37:36.192 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:37:36.195 +07:00 [INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-25 10:37:36.196 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 9.2791ms
+2025-03-25 10:37:36.198 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:37:36.199 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/0 responded 404 in 14.9166 ms
+2025-03-25 10:37:36.200 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/0 - 404 null application/json; charset=utf-8 19.3497ms
+2025-03-25 10:37:37.215 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:37:37.218 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:37:37.220 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:37:37.222 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:37:37.229 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:37:37.233 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:37:37.235 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 10.2845ms
+2025-03-25 10:37:37.237 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:37:37.238 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 17.8265 ms
+2025-03-25 10:37:37.240 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 25.1485ms
+2025-03-25 10:37:38.615 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:37:38.617 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:37:38.618 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:37:38.620 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:37:38.629 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:37:38.640 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:37:38.644 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:37:38.645 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 23.2843ms
+2025-03-25 10:37:38.647 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:37:38.648 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 29.9057 ms
+2025-03-25 10:37:38.651 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 36.1319ms
+2025-03-25 10:37:40.497 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:37:40.499 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:37:40.500 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:37:40.501 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:37:40.505 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:37:40.507 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:37:40.509 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 6.7897ms
+2025-03-25 10:37:40.511 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:37:40.511 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:37:40.512 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 11.5540 ms
+2025-03-25 10:37:40.513 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:37:40.514 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 17.1377ms
+2025-03-25 10:37:40.515 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:37:40.518 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:37:40.524 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:37:40.526 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:37:40.527 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 7.571ms
+2025-03-25 10:37:40.528 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:37:40.529 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 14.1788 ms
+2025-03-25 10:37:40.531 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 19.3633ms
+2025-03-25 10:37:57.757 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:37:57.759 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:37:57.760 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:37:57.761 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:37:57.770 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:37:57.776 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:37:57.778 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:37:57.779 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 16.9839ms
+2025-03-25 10:37:57.779 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:37:57.780 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:37:57.780 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 20.0728 ms
+2025-03-25 10:37:57.781 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:37:57.782 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 24.6876ms
+2025-03-25 10:37:57.782 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:37:57.784 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:37:57.788 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:37:57.791 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:37:57.792 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:37:57.793 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 7.7888ms
+2025-03-25 10:37:57.794 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:37:57.794 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 11.6624 ms
+2025-03-25 10:37:57.795 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 15.7061ms
+2025-03-25 10:38:02.049 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:38:02.051 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:02.051 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:02.052 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:02.060 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:02.062 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:02.063 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 9.6246ms
+2025-03-25 10:38:02.064 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:02.064 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:38:02.065 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 13.7210 ms
+2025-03-25 10:38:02.066 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:02.067 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 17.9971ms
+2025-03-25 10:38:02.068 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:02.070 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:02.073 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:02.076 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:02.077 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 5.6409ms
+2025-03-25 10:38:02.077 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:02.078 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 10.0264 ms
+2025-03-25 10:38:02.079 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 14.5485ms
+2025-03-25 10:38:04.213 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:04.215 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:04.215 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:04.216 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:04.221 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:04.224 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:04.226 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:04.227 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 9.3101ms
+2025-03-25 10:38:04.228 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:04.228 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:04.228 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 13.0666 ms
+2025-03-25 10:38:04.230 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:04.231 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 18.0262ms
+2025-03-25 10:38:04.231 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:04.234 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:04.237 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:04.239 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:04.241 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:04.242 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 7.1524ms
+2025-03-25 10:38:04.243 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:04.244 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 12.2770 ms
+2025-03-25 10:38:04.245 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 16.6672ms
+2025-03-25 10:38:05.777 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/5 - null null
+2025-03-25 10:38:05.779 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:05.779 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:05.780 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:05.784 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:05.787 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:05.788 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 6.676ms
+2025-03-25 10:38:05.789 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:05.789 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/5 - null null
+2025-03-25 10:38:05.790 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/5 responded 200 in 10.3596 ms
+2025-03-25 10:38:05.791 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:05.792 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/5 - 200 null application/json; charset=utf-8 14.8566ms
+2025-03-25 10:38:05.792 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:05.794 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:05.798 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:05.800 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:05.801 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 6.2657ms
+2025-03-25 10:38:05.802 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:05.803 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/5 responded 200 in 10.8814 ms
+2025-03-25 10:38:05.804 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/5 - 200 null application/json; charset=utf-8 15.2591ms
+2025-03-25 10:38:07.645 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:07.647 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:07.647 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:07.648 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:07.652 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:07.655 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:07.657 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:07.657 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 8.4431ms
+2025-03-25 10:38:07.658 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:07.658 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:07.659 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 11.6451 ms
+2025-03-25 10:38:07.660 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:07.661 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 16.1897ms
+2025-03-25 10:38:07.661 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:07.663 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:07.667 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:07.670 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:07.671 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:07.672 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 7.3663ms
+2025-03-25 10:38:07.672 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:07.673 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 11.6520 ms
+2025-03-25 10:38:07.674 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 15.5098ms
+2025-03-25 10:38:09.034 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/5 - null null
+2025-03-25 10:38:09.035 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:09.036 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:09.037 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:09.044 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:09.048 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:09.050 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 11.7241ms
+2025-03-25 10:38:09.051 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:09.051 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/5 - null null
+2025-03-25 10:38:09.051 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/5 responded 200 in 15.3457 ms
+2025-03-25 10:38:09.053 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:09.054 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/5 - 200 null application/json; charset=utf-8 20.4612ms
+2025-03-25 10:38:09.055 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:09.057 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:09.060 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:09.063 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:09.064 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 6.1542ms
+2025-03-25 10:38:09.065 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:09.066 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/5 responded 200 in 11.5071 ms
+2025-03-25 10:38:09.067 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/5 - 200 null application/json; charset=utf-8 16.4394ms
+2025-03-25 10:38:10.588 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:10.589 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:10.590 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:10.591 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:10.594 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:10.597 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:10.599 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:10.600 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 7.8191ms
+2025-03-25 10:38:10.601 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:10.601 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:10.601 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 10.8589 ms
+2025-03-25 10:38:10.602 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:10.603 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 15.3938ms
+2025-03-25 10:38:10.604 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:10.606 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:10.617 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:10.621 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:10.623 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:10.624 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 17.4167ms
+2025-03-25 10:38:10.625 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:10.625 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 21.5989 ms
+2025-03-25 10:38:10.626 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 25.4327ms
+2025-03-25 10:38:13.230 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/4 - null null
+2025-03-25 10:38:13.231 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:13.232 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:13.233 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:13.236 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:13.238 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:13.239 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 5.8201ms
+2025-03-25 10:38:13.240 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:13.241 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/4 - null null
+2025-03-25 10:38:13.241 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/4 responded 200 in 8.9460 ms
+2025-03-25 10:38:13.242 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:13.243 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/4 - 200 null application/json; charset=utf-8 13.4135ms
+2025-03-25 10:38:13.244 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:13.246 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:13.249 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:13.250 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:13.251 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 4.7408ms
+2025-03-25 10:38:13.252 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:13.253 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/4 responded 200 in 9.4521 ms
+2025-03-25 10:38:13.255 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/4 - 200 null application/json; charset=utf-8 14.1877ms
+2025-03-25 10:38:15.523 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:15.525 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:15.526 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:15.526 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:15.531 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:15.534 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:15.536 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:15.537 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 9.5739ms
+2025-03-25 10:38:15.538 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:15.538 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:15.539 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 13.1062 ms
+2025-03-25 10:38:15.540 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:15.541 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 17.8785ms
+2025-03-25 10:38:15.542 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:15.543 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:15.547 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:15.549 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:15.551 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:15.552 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 7.4048ms
+2025-03-25 10:38:15.553 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:15.553 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 11.4789 ms
+2025-03-25 10:38:15.554 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 15.7971ms
+2025-03-25 10:38:17.146 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:38:17.147 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:17.148 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:17.148 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:17.153 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:17.155 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:17.157 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 7.4741ms
+2025-03-25 10:38:17.157 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:17.158 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:38:17.158 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 10.5291 ms
+2025-03-25 10:38:17.159 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:17.160 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 14.4665ms
+2025-03-25 10:38:17.161 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:17.163 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:17.167 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:17.169 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:17.170 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 6.0034ms
+2025-03-25 10:38:17.171 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:17.172 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 11.1983 ms
+2025-03-25 10:38:17.173 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 14.9864ms
+2025-03-25 10:38:18.940 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:18.942 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:18.943 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:18.943 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:18.946 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:18.948 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:18.950 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:18.951 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 6.8416ms
+2025-03-25 10:38:18.951 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:18.952 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:18.952 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 9.4825 ms
+2025-03-25 10:38:18.953 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:18.954 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 13.5178ms
+2025-03-25 10:38:18.954 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:18.956 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:18.959 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:18.961 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:18.962 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:18.963 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 6.4103ms
+2025-03-25 10:38:18.964 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:18.965 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 10.4872 ms
+2025-03-25 10:38:18.966 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 14.3338ms
+2025-03-25 10:38:19.922 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/2 - null null
+2025-03-25 10:38:19.923 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:19.924 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:19.925 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:19.929 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:19.932 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:19.934 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 8.5885ms
+2025-03-25 10:38:19.936 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:19.936 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/2 - null null
+2025-03-25 10:38:19.936 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/2 responded 200 in 12.4977 ms
+2025-03-25 10:38:19.938 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:19.938 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/2 - 200 null application/json; charset=utf-8 16.5069ms
+2025-03-25 10:38:19.939 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:19.941 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:19.946 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:19.948 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:19.949 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 7.0993ms
+2025-03-25 10:38:19.950 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:19.951 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/2 responded 200 in 12.1012 ms
+2025-03-25 10:38:19.952 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/2 - 200 null application/json; charset=utf-8 16.2172ms
+2025-03-25 10:38:22.324 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:22.326 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:22.326 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:22.327 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:22.330 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:22.332 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:22.334 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:22.335 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 6.8133ms
+2025-03-25 10:38:22.335 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:22.335 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:22.336 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 9.4444 ms
+2025-03-25 10:38:22.337 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:22.338 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 13.4841ms
+2025-03-25 10:38:22.338 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:22.340 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:22.343 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:22.345 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:22.346 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:22.347 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 6.1394ms
+2025-03-25 10:38:22.347 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:22.348 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 9.8702 ms
+2025-03-25 10:38:22.349 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 13.5063ms
+2025-03-25 10:38:23.816 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/2 - null null
+2025-03-25 10:38:23.817 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:23.818 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:23.819 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:23.822 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:23.825 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:23.826 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 6.2947ms
+2025-03-25 10:38:23.827 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:23.827 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/2 - null null
+2025-03-25 10:38:23.828 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/2 responded 200 in 9.6619 ms
+2025-03-25 10:38:23.829 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:23.830 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/2 - 200 null application/json; charset=utf-8 14.2216ms
+2025-03-25 10:38:23.831 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:23.833 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:23.836 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:23.838 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:23.840 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 5.9856ms
+2025-03-25 10:38:23.841 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:23.841 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/2 responded 200 in 10.6560 ms
+2025-03-25 10:38:23.843 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/2 - 200 null application/json; charset=utf-8 15.5429ms
+2025-03-25 10:38:24.971 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:24.973 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:24.974 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:24.975 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:24.980 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:24.983 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:24.984 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:24.986 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 9.6658ms
+2025-03-25 10:38:24.987 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:24.987 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:24.987 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 13.7268 ms
+2025-03-25 10:38:24.989 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:24.989 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 18.3332ms
+2025-03-25 10:38:24.990 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:24.992 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:24.996 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:24.999 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:25.000 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:25.001 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 8.771ms
+2025-03-25 10:38:25.002 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:25.003 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 12.7179 ms
+2025-03-25 10:38:25.004 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 16.246ms
+2025-03-25 10:38:26.255 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/3 - null null
+2025-03-25 10:38:26.257 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:26.257 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:26.258 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:26.262 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:26.265 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:26.266 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 6.2477ms
+2025-03-25 10:38:26.266 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:26.267 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/3 - null null
+2025-03-25 10:38:26.267 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/3 responded 200 in 9.7844 ms
+2025-03-25 10:38:26.268 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:26.269 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/3 - 200 null application/json; charset=utf-8 13.949ms
+2025-03-25 10:38:26.269 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:26.271 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:26.275 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:38:26.278 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:38:26.279 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 6.3943ms
+2025-03-25 10:38:26.280 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:38:26.280 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/3 responded 200 in 10.9978 ms
+2025-03-25 10:38:26.282 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/3 - 200 null application/json; charset=utf-8 14.8846ms
+2025-03-25 10:38:28.587 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:28.589 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:28.590 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:28.591 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:28.595 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:28.598 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:28.600 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:28.601 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 8.4593ms
+2025-03-25 10:38:28.601 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:28.602 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:38:28.602 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 12.0657 ms
+2025-03-25 10:38:28.603 +07:00 [INF] CORS policy execution successful.
+2025-03-25 10:38:28.604 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 16.4307ms
+2025-03-25 10:38:28.604 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:28.606 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:38:28.610 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:38:28.612 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:38:28.614 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:38:28.615 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 6.9773ms
+2025-03-25 10:38:28.615 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:38:28.616 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 11.5184 ms
+2025-03-25 10:38:28.617 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 15.0918ms
+2025-03-25 10:44:36.965 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/swagger/index.html - null null
+2025-03-25 10:44:36.967 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/swagger/index.html - 200 null text/html;charset=utf-8 2.0606ms
+2025-03-25 10:44:36.973 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/swagger/index.js - null null
+2025-03-25 10:44:36.975 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/swagger/index.js - 200 null application/javascript;charset=utf-8 2.0674ms
+2025-03-25 10:44:37.098 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/swagger/v1/swagger.json - null null
+2025-03-25 10:44:37.104 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 6.1529ms
+2025-03-25 10:44:45.721 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - null null
+2025-03-25 10:44:45.723 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:44:45.723 +07:00 [INF] Route matched with {action = "GetRecipeById", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecipeById(Int32) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:44:45.779 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CategoryId], [s].[Details], [s].[Name], [s].[Id0], [i].[Id], [i].[IngredientName], [i].[Quantity], [i].[RecipeId], [s].[Name0]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CategoryId], [r].[Details], [r].[Name], [c].[Id] AS [Id0], [c].[Name] AS [Name0]
+    FROM [Recipes] AS [r]
+    INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+    WHERE [r].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [Ingredients] AS [i] ON [s].[Id] = [i].[RecipeId]
+ORDER BY [s].[Id], [s].[Id0]
+2025-03-25 10:44:45.781 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.RecipeDetailsDto'.
+2025-03-25 10:44:45.782 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI) in 58.0717ms
+2025-03-25 10:44:45.783 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetRecipeById (FoodRecipeAPI)'
+2025-03-25 10:44:45.784 +07:00 [INF] HTTP GET /api/v1/get-recipe-list/1 responded 200 in 61.6090 ms
+2025-03-25 10:44:45.785 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipe-list/1 - 200 null application/json; charset=utf-8 64.4894ms
+2025-03-25 10:44:56.275 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:44:56.277 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:44:56.277 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:44:56.284 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:44:56.289 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:44:56.290 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:44:56.292 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 13.1236ms
+2025-03-25 10:44:56.293 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:44:56.293 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 16.5942 ms
+2025-03-25 10:44:56.295 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 19.7282ms
+2025-03-25 10:45:05.196 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/swagger/index.html - null null
+2025-03-25 10:45:05.198 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/swagger/index.html - 200 null text/html;charset=utf-8 2.026ms
+2025-03-25 10:45:05.203 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/swagger/index.js - null null
+2025-03-25 10:45:05.205 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/swagger/index.js - 200 null application/javascript;charset=utf-8 1.9416ms
+2025-03-25 10:45:05.265 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/swagger/v1/swagger.json - null null
+2025-03-25 10:45:05.269 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 3.6732ms
+2025-03-25 10:45:11.273 +07:00 [INF] Application is shutting down...
+2025-03-25 10:45:17.622 +07:00 [INF] Now listening on: http://localhost:5267
+2025-03-25 10:45:17.649 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-25 10:45:17.650 +07:00 [INF] Hosting environment: Development
+2025-03-25 10:45:17.651 +07:00 [INF] Content root path: C:\1. Magang\Accelist - Training\FoodRecipeApp\backend\FoodRecipeAPI
+2025-03-25 10:45:19.317 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/swagger/index.html - null null
+2025-03-25 10:45:19.394 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/swagger/index.html - 200 null text/html;charset=utf-8 78.4415ms
+2025-03-25 10:45:19.399 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/swagger/index.js - null null
+2025-03-25 10:45:19.403 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/swagger/index.js - 200 null application/javascript;charset=utf-8 3.7345ms
+2025-03-25 10:45:19.438 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/swagger/v1/swagger.json - null null
+2025-03-25 10:45:19.506 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 68.6011ms
+2025-03-25 10:45:25.498 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - null null
+2025-03-25 10:45:25.504 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-03-25 10:45:25.508 +07:00 [INF] Executing endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:45:25.527 +07:00 [INF] Route matched with {action = "GetAllRecipes", controller = "Recipes"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRecipes(FoodRecipeAPI.Models.Dto.RecipeQueryDto) on controller FoodRecipeAPI.Controllers.RecipesController (FoodRecipeAPI).
+2025-03-25 10:45:26.364 +07:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Recipes] AS [r]
+2025-03-25 10:45:26.451 +07:00 [INF] Executed DbCommand (18ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r0].[Name], [c].[Name] AS [CategoryName], [r0].[Details]
+FROM (
+    SELECT [r].[CategoryId], [r].[Details], [r].[Name]
+    FROM [Recipes] AS [r]
+    ORDER BY [r].[Name]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [r0]
+INNER JOIN [Categories] AS [c] ON [r0].[CategoryId] = [c].[Id]
+ORDER BY [r0].[Name]
+2025-03-25 10:45:26.460 +07:00 [INF] Executing OkObjectResult, writing value of type 'FoodRecipeAPI.Models.Dto.PageResponseDto`1[[FoodRecipeAPI.Models.Dto.RecipeListDto, FoodRecipeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-25 10:45:26.497 +07:00 [INF] Executed action FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI) in 965.8555ms
+2025-03-25 10:45:26.498 +07:00 [INF] Executed endpoint 'FoodRecipeAPI.Controllers.RecipesController.GetAllRecipes (FoodRecipeAPI)'
+2025-03-25 10:45:26.501 +07:00 [INF] HTTP GET /api/v1/get-recipes-list responded 200 in 997.7870 ms
+2025-03-25 10:45:26.509 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5267/api/v1/get-recipes-list - 200 null application/json; charset=utf-8 1010.3443ms
+2025-03-25 10:47:10.183 +07:00 [INF] Application is shutting down...

@@ -39,6 +39,7 @@ namespace FoodRecipeAPI.Application.Queries
                 .Where(r => string.IsNullOrEmpty(request.Query.CategoryName) || r.Category.Name == request.Query.CategoryName)
                 .Select(r => new RecipeListDto
                 {
+                    Id = r.Id,
                     Name = r.Name,
                     CategoryName = r.Category.Name,
                     Details = r.Details
