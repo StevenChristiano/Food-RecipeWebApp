@@ -1,5 +1,6 @@
 ﻿using FoodRecipeAPI.Data;
 using FoodRecipeAPI.Models;
+using FoodRecipeAPI.Models.Dto;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -12,17 +13,10 @@ namespace FoodRecipeAPI.Application.Commands
     public class UpdateRecipeCommand : IRequest<bool>
     {
         public int Id { get; set; }
-        public string RecipeName { get; set; }
-        public string Details { get; set; }
-        public int CategoryId { get; set; }
-        public List<UpdateIngredientCommand> Ingredients { get; set; }
-    }
-
-    public class UpdateIngredientCommand
-    {
-        public int Id { get; set; }  // Bisa 0 jika ingredient baru
-        public string Name { get; set; }
-        public string Quantity { get; set; }
+        public string? Name { get; set; }
+        public string? Details { get; set; }
+        public string? CategoryName { get; set; }
+        public List<IngredientsDto>? Ingredients { get; set; }
     }
 
     public class UpdateRecipeCommandHandler : IRequestHandler<UpdateRecipeCommand, bool>
@@ -38,37 +32,52 @@ namespace FoodRecipeAPI.Application.Commands
         {
             var recipe = await _context.Recipes
                 .Include(r => r.Ingredients)
-                .FirstOrDefaultAsync(r => r.Id == request.Id);
+                .FirstOrDefaultAsync(r => r.Id == request.Id, cancellationToken);
 
             if (recipe == null) return false;
 
-            // Update Resep
-            recipe.Name = request.RecipeName;
-            recipe.Details = request.Details;
-            recipe.CategoryId = request.CategoryId;
+            if (!string.IsNullOrEmpty(request.Name))
+                recipe.Name = request.Name;
 
-            // Update Ingredients
-            foreach (var ingredient in request.Ingredients)
+            if (!string.IsNullOrEmpty(request.Details))
+                recipe.Details = request.Details;
+
+            if (!string.IsNullOrEmpty(request.CategoryName))
             {
-                var existingIngredient = recipe.Ingredients.FirstOrDefault(i => i.Id == ingredient.Id);
-                if (existingIngredient != null)
+                var category = await _context.Categories
+                    .FirstOrDefaultAsync(c => c.Name == request.CategoryName, cancellationToken);
+
+                if (category != null)
+                    recipe.CategoryId = category.Id;
+            }
+
+            if (request.Ingredients != null)
+            {
+                // Hapus ingredient yang tidak ada dalam request
+                var ingredientIdsInRequest = request.Ingredients.Select(i => i.Id).ToList();
+                recipe.Ingredients.RemoveAll(i => !ingredientIdsInRequest.Contains(i.Id));
+
+                foreach (var ingredient in request.Ingredients)
                 {
-                    // Update existing ingredient
-                    existingIngredient.IngredientName = ingredient.Name;
-                    existingIngredient.Quantity = ingredient.Quantity;
-                }
-                else
-                {
-                    // Tambahkan bahan baru
-                    recipe.Ingredients.Add(new Ingredient
+                    var existingIngredient = recipe.Ingredients.FirstOrDefault(i => i.Id == ingredient.Id);
+
+                    if (existingIngredient != null)
                     {
-                        IngredientName = ingredient.Name,
-                        Quantity = ingredient.Quantity
-                    });
+                        existingIngredient.IngredientName = ingredient.Name ?? existingIngredient.IngredientName;
+                        existingIngredient.Quantity = ingredient.Quantity ?? existingIngredient.Quantity;
+                    }
+                    else if (ingredient.Id == 0 && !string.IsNullOrEmpty(ingredient.Name) && !string.IsNullOrEmpty(ingredient.Quantity))
+                    {
+                        recipe.Ingredients.Add(new Ingredient
+                        {
+                            IngredientName = ingredient.Name,
+                            Quantity = ingredient.Quantity
+                        });
+                    }
                 }
             }
 
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
             return true;
         }
     }

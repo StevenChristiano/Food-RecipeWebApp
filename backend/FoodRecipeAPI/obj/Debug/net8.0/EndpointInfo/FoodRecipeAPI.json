@@ -10,6 +10,45 @@
         "tags": [
           "Recipes"
         ],
+        "parameters": [
+          {
+            "name": "CategoryName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrderState",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -17,7 +56,7 @@
         }
       }
     },
-    "/api/v1/get-recipe/{id}": {
+    "/api/v1/get-recipe-list/{id}": {
       "get": {
         "tags": [
           "Recipes"
@@ -64,6 +103,18 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/get-categories": {
+      "get": {
+        "tags": [
+          "Recipes"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -221,7 +272,7 @@
         },
         "additionalProperties": false
       },
-      "UpdateIngredientCommand": {
+      "UpdateRecipeCommand": {
         "type": "object",
         "properties": {
           "id": {
@@ -232,36 +283,18 @@
             "type": "string",
             "nullable": true
           },
-          "quantity": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UpdateRecipeCommand": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "recipeName": {
-            "type": "string",
-            "nullable": true
-          },
           "details": {
             "type": "string",
             "nullable": true
           },
-          "categoryId": {
-            "type": "integer",
-            "format": "int32"
+          "categoryName": {
+            "type": "string",
+            "nullable": true
           },
           "ingredients": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/UpdateIngredientCommand"
+              "$ref": "#/components/schemas/IngredientsDto"
             },
             "nullable": true
           }

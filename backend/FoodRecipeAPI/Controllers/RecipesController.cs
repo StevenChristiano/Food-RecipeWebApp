@@ -24,60 +24,80 @@ namespace FoodRecipeAPI.Controllers
             _context = context;
         }
 
-        // ✅ Ambil semua daftar resep
         [HttpGet("get-recipes-list")]
-        public async Task<IActionResult> GetRecipes()
+        public async Task<IActionResult> GetAllRecipes([FromQuery] RecipeQueryDto queryDto)
         {
-            var recipes = await _mediator.Send(new GetAllRecipesQuery());
-            if (recipes == null || !recipes.Any())
-                return NoContent();
-
+            var recipes = await _mediator.Send(new GetAllRecipesQuery(queryDto));
             return Ok(recipes);
         }
 
-        // ✅ Ambil satu resep berdasarkan ID
-        [HttpGet("get-recipe/{id}")]
-        public async Task<IActionResult> GetRecipe(int id)
+        [HttpGet("get-recipe-list/{id}")]
+        public async Task<IActionResult> GetRecipeById(int id)
         {
-            var recipe = await _context.Recipes
-                .Include(r => r.Ingredients)
-                .Where(r => r.Id == id)
-                .Select(r => new UpdateRecipeDto
-                {
-                    Id = r.Id,
-                    RecipeName = r.Name,
-                    Details = r.Details,
-                    CategoryId = r.CategoryId,
-                    Ingredients = r.Ingredients.Select(i => new IngredientDto
-                    {
-                        Id = i.Id,
-                        Name = i.IngredientName,
-                        Quantity = i.Quantity
-                    }).ToList()
-                })
-                .FirstOrDefaultAsync();
-
+            var recipe = await _mediator.Send(new GetRecipeByIdQuery { Id = id });
             if (recipe == null)
-                return NotFound(new { message = "Resep tidak ditemukan" });
+            {
+                return NotFound(new { message = "Recipe is not found..." });
+            }
+            var recipeDto = new RecipeDetailsDto
+            {
+                Id = recipe.Id,
+                Name = recipe.Name,
+                Details = recipe.Details,
+                CategoryName = recipe.Category.Name,
+                Ingredients = recipe.Ingredients.Select(i => new IngredientsDto
+                {
+                    Id = i.Id,
+                    Name = i.IngredientName,
+                    Quantity = i.Quantity,
+                }).ToList()
+            };
 
-            return Ok(recipe);
+            return Ok(recipeDto);
         }
 
         [HttpPost("create-recipe")]
         public async Task<IActionResult> CreateRecipe([FromBody] CreateRecipeCommand command)
         {
             var recipe = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetRecipe), new { id = recipe.Id }, recipe);
+            return Ok(recipe);
+        }
+
+        [HttpGet("get-categories")]
+        public async Task<IActionResult> GetCategories()
+        {
+            var categories = await _context.Categories
+                .Select(c => new { c.Id, c.Name })
+                .ToListAsync();
+
+            return Ok(categories);
         }
 
         [HttpPut("update-recipe/{id}")]
         public async Task<IActionResult> UpdateRecipe(int id, [FromBody] UpdateRecipeCommand command)
         {
             if (id != command.Id)
-                return BadRequest(new { message = "ID tidak cocok dengan data yang dikirim." });
+            {
+                return BadRequest(new ProblemDetails
+                {
+                    Title = "Bad Request",
+                    Status = 400,
+                    Detail = "ID does not match with request body.",
+                    Instance = HttpContext.Request.Path
+                });
+            }
 
             var result = await _mediator.Send(command);
-            if (!result) return NotFound(new { message = "Resep tidak ditemukan" });
+            if (!result)
+            {
+                return NotFound(new ProblemDetails
+                {
+                    Title = "Not Found",
+                    Status = 404,
+                    Detail = "Recipe not found or invalid category ID.",
+                    Instance = HttpContext.Request.Path
+                });
+            }
 
             return NoContent();
         }
@@ -86,7 +106,16 @@ namespace FoodRecipeAPI.Controllers
         public async Task<IActionResult> DeleteRecipe(int id)
         {
             var result = await _mediator.Send(new DeleteRecipeCommand { Id = id });
-            if (!result) return NotFound(new { message = "Resep tidak ditemukan" });
+            if (!result)
+            {
+                return NotFound(new ProblemDetails
+                {
+                    Title = "Not Found",
+                    Status = 404,
+                    Detail = "Recipe not found or invalid category ID.",
+                    Instance = HttpContext.Request.Path
+                });
+            }
 
             return NoContent();
         }

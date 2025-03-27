@@ -5,16 +5,10 @@ namespace FoodRecipeAPI.Models.Dto
     public class UpdateRecipeDto
     {
         public int Id { get; set; }
-        public string RecipeName { get; set; }
-        public string Details { get; set; }
-        public int CategoryId { get; set; }
-        public List<IngredientDto> Ingredients { get; set; }
-    }
+        public string? RecipeName { get; set; }  // Bisa null
+        public string? Details { get; set; }  // Bisa null
+        public int? CategoryId { get; set; }  // Bisa null
 
-    public class IngredientDto
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Quantity { get; set; }
+        public List<IngredientsDto>? Ingredients { get; set; }  // Bisa null
     }
 }

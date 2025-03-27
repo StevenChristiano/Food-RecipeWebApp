@@ -74,7 +74,7 @@ namespace FoodRecipeAPI.Application.Commands
             {
                 Name = savedRecipe.Name,
                 Details = savedRecipe.Details,
-                CategoryId = category.Id,
+                CategoryName = category.Name,
                 Ingredients = savedRecipe.Ingredients.Select(i => new IngredientsDto
                 {
                     Name = i.IngredientName,

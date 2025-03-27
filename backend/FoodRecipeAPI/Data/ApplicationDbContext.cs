@@ -12,10 +12,12 @@ namespace FoodRecipeAPI.Data
         public DbSet<Ingredient> Ingredients { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Recipe>()
-                .HasMany(r => r.Ingredients)
-                .WithOne()
-                .HasForeignKey(i => i.RecipeId);
+            modelBuilder.Entity<Ingredient>()
+                .HasOne(i => i.Recipe)
+                .WithMany(r => r.Ingredients)
+                .HasForeignKey(i => i.RecipeId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
+
     }
 }

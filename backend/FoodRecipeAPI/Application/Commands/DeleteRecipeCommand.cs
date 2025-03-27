@@ -1,5 +1,6 @@
 ﻿using FoodRecipeAPI.Data;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodRecipeAPI.Application.Commands
 {
@@ -19,12 +20,17 @@ namespace FoodRecipeAPI.Application.Commands
 
         public async Task<bool> Handle(DeleteRecipeCommand request, CancellationToken cancellationToken)
         {
-            var recipe = await _context.Recipes.FindAsync(request.Id);
+            var recipe = await _context.Recipes
+                .Include(r => r.Ingredients)
+                .FirstOrDefaultAsync(r => r.Id == request.Id, cancellationToken);
+
             if (recipe == null) return false;
 
             _context.Recipes.Remove(recipe);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
+
             return true;
         }
+
     }
 }

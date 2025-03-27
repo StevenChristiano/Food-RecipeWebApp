@@ -33,8 +33,18 @@
   },
   {
     "ContainingType": "FoodRecipeAPI.Controllers.RecipesController",
-    "Method": "GetRecipe",
-    "RelativePath": "api/v1/get-recipe/{id}",
+    "Method": "GetCategories",
+    "RelativePath": "api/v1/get-categories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FoodRecipeAPI.Controllers.RecipesController",
+    "Method": "GetRecipeById",
+    "RelativePath": "api/v1/get-recipe-list/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -49,12 +59,38 @@
   },
   {
     "ContainingType": "FoodRecipeAPI.Controllers.RecipesController",
-    "Method": "GetRecipes",
+    "Method": "GetAllRecipes",
     "RelativePath": "api/v1/get-recipes-list",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "CategoryName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderBy",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderState",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
